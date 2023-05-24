@@ -1,0 +1,185 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.MobileScreen {
+  width: 100%;
+}
+.DesktopScreen {
+  width: 100%;
+}
+.MobileHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1em;
+  padding-top: 2em;
+}
+.BackgroundCircle {
+  margin-top: -3em;
+}
+
+.MobileItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.MobileItems img {
+  width: 200px;
+  height: 200px;
+}
+.CenterImg {
+  margin: 1em auto;
+}
+
+.MobileBtn {
+  display: flex;
+  margin: 3em auto;
+}
+
+span {
+  color: #0dde65;
+}
+.MobileItems h1 {
+  color: #002a80;
+  font-family: "Inter";
+  font-weight: 800;
+  font-size: 2em;
+  line-height: 40px;
+  text-align: center;
+}
+.MobileItems p {
+  color: #002a80;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 50px;
+  text-align: center;
+}
+
+/* Desktop Code */
+.DesktopScreen {
+  position: relative;
+  height: 70vh;
+}
+.DesktopItems {
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin: 22vh 0;
+}
+.DesktopText {
+width: 50% ;
+}
+.DesktopImages {
+width: 60%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-top: 4em;
+  padding-right: 2em;
+}
+.Img5 {
+  width: 25%;
+  position: absolute;
+  left: 77.44%;
+  bottom: 160px;
+}
+.Img1 {
+  width: 9%;
+  position: absolute;
+  left: 75.44%;
+  top: -280px;
+}
+.Img3 {
+  position: absolute;
+  right: 50%;
+  top: 25px;
+  width: 30%;
+}
+.Img4 {
+  position: absolute;
+  width: 38%;
+  right: 59.62px;
+  top: -147.95px;
+}
+.Img2 {
+  position: absolute;
+  width: 30%;
+  right: 49.73%;
+  top: 199.85px;
+}
+.Img6 {
+  position: absolute;
+  width: 38%;
+  right: 35.73%;
+  bottom: 45px;
+  width: 43%;
+}
+.FormContainer{
+  position: absolute;
+  top: 100px;
+  padding-right: 1em;
+}
+.DesktopLoginForm h3{
+font-family: 'Urbanist';
+font-style: normal;
+font-weight: 600;
+font-size: 1.5em;
+line-height: 29px;
+text-align: center;
+color: #ffffff;
+}
+.DesktopLoginForm h4 {
+  font-family: 'Urbanist';
+font-style: normal;
+font-weight: 400;
+font-size: 1em;
+line-height: 29px;
+text-align: center;
+color: #ffffff;
+}
+.DesktopLoginForm p{
+  font-family: 'Urbanist';
+font-style: normal;
+font-weight: 600;
+font-size: 1em;
+line-height: 29px;
+text-align: center;
+color: #ffffff;
+
+}
+
+.DesktopLoginScreen{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100vh;
+}
+.LoginContainer{
+  background: #002a80;
+}
+.TextContainer{
+  background: #FFFFFF;
+  margin: 7em 0;
+  padding: 0 1em;
+}
+.TextContainer h2{
+font-family: 'Urbanist';
+font-style: normal;
+font-weight: 700;
+font-size: 90px;
+line-height: 100px;
+text-align: center;
+letter-spacing: -0.07em;
+color: #002a80;
+}
+
