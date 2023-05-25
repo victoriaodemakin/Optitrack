@@ -21,11 +21,15 @@
   padding-left: 1em;
   padding-top: 2em;
 }
-.BackgroundCircle {
+.BackgroundCircle   {
   margin-top: -3em;
+}
+.Bg2{
+  position: absolute;
 }
 
 .MobileItems {
+  padding: 1em 0.5em 1em 0.5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,21 +51,27 @@
 span {
   color: #0dde65;
 }
-.MobileItems h1 {
+.MobileItem{
+  position: absolute;
+  top: 70px;
+  text-align:center;
+  padding: 1em 0.5em 1em 0.5em;
+}
+.MobileItem h5 {
   color: #002a80;
   font-family: "Inter";
-  font-weight: 800;
-  font-size: 2em;
-  line-height: 40px;
-  text-align: center;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 20px;
 }
-.MobileItems p {
+.MobileItem p {
   color: #002a80;
   font-family: "Inter";
   font-weight: 500;
   font-size: 1em;
-  line-height: 50px;
   text-align: center;
+  line-height: 20px;
+
 }
 
 /* Desktop Code */
@@ -164,9 +174,52 @@ color: #ffffff;
   grid-template-columns: 1.5fr 4fr;
   height: 100vh;
 }
+
 .LoginContainer{
   background: #002a80;
 }
+.DesktopSignupScreen{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100vh;
+}
+
+.DesktopSignupForm h1{
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  bottom:50px
+}
+
+.DesktopSignupForm  h2{        
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 40px;
+  text-align: center;
+  color: #002a80;
+  bottom:50px
+}
+
+.DesktopSignupForm  p{        
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 28px;
+  text-align: center;
+  color: #002a80;
+}
+ 
+.SignupContainer{
+  background: #002a80;
+}
+
 .TextContainer{
   background: #FFFFFF;
   margin: 7em 0;
