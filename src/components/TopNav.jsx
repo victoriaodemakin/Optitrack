@@ -6,6 +6,8 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { styled } from "@mui/material/styles";
+import {useNavigate} from 'react-router-dom';
+
 
 
 
@@ -63,6 +65,10 @@ const TopNav = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  const navigate = useNavigate();
+  const ProfileClick = () => {
+    navigate('/Profile');
+  };
   return (
     <div> {isDesktop ? (
       <div>
@@ -89,7 +95,7 @@ const TopNav = () => {
             onClose={handleMenuClose}
             keepMounted
           >
-            <StyledMenuItem onClick={handleMenuClose}>Profile</StyledMenuItem>
+            <StyledMenuItem onClick={ProfileClick}>Profile</StyledMenuItem>
             <StyledMenuItem onClick={handleMenuClose}>Settings</StyledMenuItem>
             <StyledMenuItem onClick={handleMenuClose}>Logout</StyledMenuItem>
           </Menu>

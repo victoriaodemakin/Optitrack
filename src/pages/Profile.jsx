@@ -1,43 +1,17 @@
 import React, { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled } from "@mui/material/styles";
-import { Typography, Button, TextField as MuiTextField, Avatar } from "@mui/material";
+import { Button, TextField as MuiTextField, Avatar } from "@mui/material";
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Box } from '@mui/system';
 import ProfilePicture from '../assets/ProfilePicture.svg'
+import Sidebar from "../components/Sidebar"
+import TopNav from "../components/TopNav"
+
 
 // Styles
-const Container = styled(Box)`
-  display: flex;
-  height: 100vh;
-`;
 
-const DesktopSidebar = styled(Box)`
-  background-color: #002a80;
-  color: #ffffff;
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const MobileSidebar = styled(Box)`
-  background-color: #002a80;
-  color: #ffffff;
-  width: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const SidebarLink = styled(Typography)`
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #002a80;
-  }
-`;
 
 const MainContent = styled(Box)`
   flex: 1;
@@ -62,8 +36,7 @@ background-color: #002a80;
 color: #ffffff;
 `;
 
-const ProfilePage = () => {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
+const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [businessName, setBusinessName] = useState('');
   const [email, setEmail] = useState('');
@@ -78,23 +51,14 @@ const ProfilePage = () => {
   const handleEditProfile = () => {
     setIsEditing(true);
   };
-
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  
   return (
-    <Container>
-      {isDesktop ? (
-        <DesktopSidebar>
-          <SidebarLink>Dashboard</SidebarLink>
-          <SidebarLink>Capture Revenue</SidebarLink>
-          <SidebarLink>Capture Expense</SidebarLink>
-          <SidebarLink>Budget</SidebarLink>
-          <SidebarLink>Simulation</SidebarLink>
-        </DesktopSidebar>
-      ) : (
-        <MobileSidebar>
-          <SidebarLink>☰</SidebarLink>
-        </MobileSidebar>
-      )}
-
+    <div className="ProfileScreen">
+     {isDesktop ? (
+        <div>
+  <Sidebar/>
+  <TopNav/>
       <MainContent>
         <HeaderContainer>
           <MuiTextField
@@ -180,8 +144,16 @@ const ProfilePage = () => {
           </Box>
         </Box>
       </MainContent>
-    </Container>
+        </div>
+        ) : (
+          <div className="ProfileMobileScreen">
+            <h1>app dev</h1>
+          </div>
+        )}
+    </div>
+ 
+
   );
 };
 
-export default ProfilePage;
+export default Profile;

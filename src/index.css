@@ -182,4 +182,68 @@ text-align: center;
 letter-spacing: -0.07em;
 color: #002a80;
 }
+.MobileItem {
+position: absolute;
+top:78px;
+left: 70px;
 
+}
+.MobileItem h3{
+font-family: 'Urbanist';
+font-style: normal;
+font-weight: 700;
+font-size: 1.2em;
+text-align: center;
+color: #002a80;
+line-height: 30px;
+
+}
+.MobileItem h5{
+font-family: 'Urbanist';
+font-style: normal;
+font-weight: 500;
+font-size: 1em;
+text-align: center;
+color: #002a80;
+}
+.DesktopSignupScreen{
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  height: 100vh;
+  overflow-y: hidden;
+}
+.DesktopSignupForm h1{
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  bottom:50px
+}
+
+.DesktopSignupForm  h2{        
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 40px;
+  text-align: center;
+  color: #002a80;
+  bottom:50px
+}
+
+.DesktopSignupForm  p{        
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 28px;
+  text-align: center;
+  color: #002a80;
+}
+
+.SignupContainer{
+  background: #002a80;
+}

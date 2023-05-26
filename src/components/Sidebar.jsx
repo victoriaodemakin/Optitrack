@@ -16,11 +16,13 @@ import BarChartIcon from "@mui/icons-material/BarChartOutlined";
 import HistoryIcon from "@mui/icons-material/HistoryOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const StyledListItem = styled(ListItem)`
   &.active {
     background-color: ${({ theme }) => theme.palette.action.selected};
-    color:0DDE65;
-  }
+    &:hover {
+      background-color: #002a80;
+    }  }
 `;
 
 const StyledDrawer = styled(Drawer)`
@@ -75,6 +77,7 @@ const Sidebar = () => {
   const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
   };
+ 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (

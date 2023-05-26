@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery";
+import MobileGreenLogo from "../components/MobileGreenLogo"
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
-import MobileLogo2 from "../assets/DesktopColorLogo.svg";
-import BlueEllipse from "../assets/BackgroundEllipse.svg";
-import DesktopColorLogo from "../assets/DesktopColorLogo.svg"
+import BlueEllipse from "../assets/BlueCircleIcon.svg"
 import { Button, TextField as MuiTextField } from "@mui/material";
+import DesktopColorLogo from '../assets/DesktopColorLogo.svg'
+import {useNavigate} from 'react-router-dom';
 
 
 
-// const ContainedButton = styled(Button)`
-//   background: #002a80;
-//   border-radius: 4px;
-//   font-weight: 500;
-//   font-size: 1em;
-//   color: white;
-//   width: 150px;
-// `;
+const Signup = () => {
+ const isDesktop = useMediaQuery('(min-width: 1024px)');
+ const [firstName, setFirstName] = useState('');
+const [lastName, setLastName] = useState('');
+ const [email, setEmail] = useState('');
+ const [password, setPassword] = useState('');
+ const [confirmPassword, setConfirmPassword] = useState('');
+ const [Agree, setAgree] = useState(false);
 
-const OutlineButton = styled(Button)`
-  background: #002a80;
-  border-radius: 8px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1.25em;
-  color: #ffffff;
-  width: 100%;
-  border: 2px solid #002a80;
+
+ const OutlineButton = styled(Button)`
+ background: #002a80;
+ border-radius: 4px;
+ font-style: normal;
+ font-weight: 500;
+ font-size: 1em;
+ color: #ffff;
+ width: 150px;
+ border: 2px solid #002a80;
+ margin-left: .3em;
+ box-shadow: none;
+ &:hover  {
+  border-color: #002a80;
+  color:#002a80;
+}
 `;
 
 const HeaderTypography = styled(Typography)`
@@ -35,10 +43,10 @@ const HeaderTypography = styled(Typography)`
   font-weight: 800;
   font-size: 3em;
   line-height: 4px;
-  margin-left: 1em;
+  margin-left: 1.7em;
   text-align: center;
   position:absolute;
-  bottom: -50px;
+  bottom: 50px;
 `;
 const TextField = styled(MuiTextField)`
   .MuiOutlinedInput-root {
@@ -83,59 +91,53 @@ const TextArea = styled(MuiTextField)`
 }
 fieldset {
   border-color: #002a80;
+  margin-top: -.4em;
+
 }
 `
 
-function Signup() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [Agree, setAgree] = useState(false);
+ const handleFirstNameChange = (e) => {
+   setFirstName(e.target.value);
+ };
 
+ const handleLastNameChange = (e) => {
+   setLastName(e.target.value);
+ };
+ const handleEmailChange = (e) => {
+   setEmail(e.target.value);
+ };
 
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
+ const handlePasswordChange = (e) => {
+   setPassword(e.target.value);
+ };
 
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+ const handleConfirmPasswordChange = (e) => {
+   setConfirmPassword(e.target.value);
+ };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+ const handleCheckboxChange = () => {
+   setAgree(!Agree);
+ };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
+ const handleSignup = (e) => {
+   e.preventDefault();}
 
-  const handleCheckboxChange = () => {
-    setAgree(!Agree);
-  };
+ const handleSubmit = (e) => {
+   e.preventDefault();
+ };
+ const navigate = useNavigate();
+ const LoginClick = () => {
+   navigate('/Login');
+ };
 
-  const handleSignup = (e) => {
-    e.preventDefault();}
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
- 
   return (
     <div>
-      {isDesktop ? (
-
-<div className="DesktopSignupScreen" style={{height:"100%"}}>
+     {isDesktop ? (
+          <div className="DesktopSignupScreen" style={{height:"100vh", overflow:"hidden"}}>
  <div className="SignupContainer">
    <div className="DesktopSignup">
      <div className="DesktopLogo">
-       <img src={DesktopColorLogo} alt="desktop color logo" style={{width:"25%", margin:"2em 1em 5em 8em", }}/>
+       <img src={DesktopColorLogo} alt="desktop color logo" style={{width:"25%", margin:"2em 1em 2em 8em", }}/>
       </div>
         <div className="DesktopSignupForm">
          <h1>Have all your business finances in one place, to stay on top of your business result.</h1>
@@ -145,7 +147,7 @@ const [lastName, setLastName] = useState('');
         </div>
   </div> 
   </div>      
-  <div className="DesktopForm"style={{padding:"5em"}}>
+  <div className="DesktopForm"style={{padding:"3em 7em", height:"100vh"}}>
     <div className="DesktopSignupForm">
           <h2>Create an account</h2>
           <p>Sign up to get an account</p>
@@ -188,7 +190,7 @@ const [lastName, setLastName] = useState('');
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
-             
+
               />
               </div>
               <div>
@@ -202,7 +204,7 @@ const [lastName, setLastName] = useState('');
                 autoComplete="current-password"
                 value={password}
                 onChange={handlePasswordChange}
-                
+
               />
               </div>
               <div>
@@ -221,12 +223,12 @@ const [lastName, setLastName] = useState('');
               <div className="MobileBtn">
                 <OutlineButton
                   variant="outlined"
-                  sx={{ textTransform: "capitalize", fontWeight: "bold" }}
-                >
+                  sx={{ textTransform: "capitalize", fontWeight: "bold", marginTop:"-2.5em"}}
+                  onClick={LoginClick} >
                   Sign Up
                 </OutlineButton>
               </div>
-              <div style={{margin:"-2em 2em"}}>
+              <div style={{margin:"-3em 5em"}}>
           <label style={{color:"#002a80",fontSize:"0.8em",fontFamily:"Inter",}}>
             <input style={{  textAlign:"right",
             margin:"1em 1em",color:"#002a80"}}
@@ -238,18 +240,19 @@ const [lastName, setLastName] = useState('');
            I agree to all Terms and Conditions </label>
         </div>
   </form>
-   
+
 </div>
 </div>
       ) : (
-        <div className="MobileSignupScreen" 
-        style={{ height: "100vh", position: "relative", padding:"1em"}}>
-        <MobileLogo2/>
-          <div className="MobileItem">
-              <h5>Create an account</h5>
-              <p>Already have an account? Log in</p>
-            </div>
-             <form className="FormContainer" onSubmit={handleSubmit} style={{padding:"1em"}}>
+       <div className="MobileSignupScreen"
+       style={{ height: "100vh", position: "relative", padding:"1em"}}>
+<MobileGreenLogo />
+<div className="MobileItem">
+      <h3>Create an account</h3>
+      <h5>Already have an account? <span> Log in</span></h5>
+          </div>
+<div className="">
+<form className="FormContainer" onSubmit={handleSubmit} style={{marginTop:"2em"}}>
             <TextArea
               label="Firstname"
               type="name"
@@ -309,14 +312,15 @@ const [lastName, setLastName] = useState('');
                 onChange={handleConfirmPasswordChange}
               />
               
-              <div className="MobileBtn" style={{margin: "5em"}}>
-                <OutlineButton
-                  variant="outlined"
-                  sx={{ textTransform: "capitalize", fontWeight: "bold"}}
-                >
-                  Sign Up
-                </OutlineButton>
-              </div>
+            <div className="MobileBtn" style={{margin: "1em 5em"}}>
+            <OutlineButton
+                  variant="contained"
+                  type="submit"
+                  sx={{ textTransform: "capitalize", fontWeight: "bold", }}
+                  onClick={LoginClick}>
+                  Sign up
+            </OutlineButton>
+            </div>
               <div style={{margin:"-1em 1em"}}>
           <label style={{color:"#002a80",fontSize:"0.8em",fontFamily:"Inter",}}>
             <input style={{  textAlign:"center",
@@ -328,15 +332,19 @@ const [lastName, setLastName] = useState('');
             />
           I agree to all Terms and Conditions </label>
          </div>
-              </form>
-          <div>
-              <img src={BlueEllipse} alt="footer circle" style={{position:"relative", top:"270px",left:"-50px"}}/>
+  </form>
+  
+</div>
+<div>
+          <img src={BlueEllipse} alt="footer circle" style={{position:"relative", top:"220px",left:"-20px"}}/>
             </div>
-          </div>
-      
-      )}
-    </div>
-  );
 
+       </div>
+      )}
+
+
+    </div>
+  )
 }
-export default Signup;
+
+export default Signup
