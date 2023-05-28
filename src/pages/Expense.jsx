@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar";
 const Expense = () => {
   return (
     <div>
-      <TopNav />
+      <TopNav Title= 'Expenses'/>
       <Sidebar />
     </div>
   );

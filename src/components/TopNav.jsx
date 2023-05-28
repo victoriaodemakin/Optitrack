@@ -54,7 +54,7 @@ line-height: 20px;
 
 }
 `
-const TopNav = () => {
+const TopNav = (props) => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -75,7 +75,7 @@ const TopNav = () => {
       <StyledAppBar position="static">
         <StyledToolbar>
           <div className="PageName">
-          <HeaderTypography variant="h3">Expenses</HeaderTypography>
+          <HeaderTypography variant="h3">{props.Title}</HeaderTypography>
           </div>
           <div className="IconContainer">
           <StyledIconButton color="inherit" aria-label="Mail">
