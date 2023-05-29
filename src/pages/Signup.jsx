@@ -127,7 +127,7 @@ fieldset {
  };
  const navigate = useNavigate();
  const LoginClick = () => {
-   navigate('/Login');
+   navigate('/Expense');
  };
 
   return (
