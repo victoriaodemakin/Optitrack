@@ -7,7 +7,6 @@ import MobileLogo from "./MobileLogo";
 import { styled } from "@mui/material/styles";
 import Ellipse70 from "../assets/FooterEllipse.svg";
 import DesktopLogo from "../assets/DesktopColorLogo.svg"
-import {useNavigate} from 'react-router-dom';
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 
