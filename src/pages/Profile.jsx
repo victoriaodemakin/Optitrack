@@ -101,9 +101,7 @@ const Profile = () => {
     setIsEditing(false);
   };
 
-  const handleEditProfile = () => {
-    setIsEditing(true);
-  };
+  
   const fileInputRef = useRef(null);
 
   const handleUploadButtonClick = () => {

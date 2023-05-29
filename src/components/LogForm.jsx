@@ -100,9 +100,7 @@ const LogForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const navigate = useNavigate();
-  const expenseClick = () => {
-    navigate('/Expense');
-  };
+ 
 
 
   const handleEmailChange = (e) => {
