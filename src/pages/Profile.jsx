@@ -10,6 +10,7 @@ import {
 import UploadFileOutlinedIcon from "@mui/icons-material/UploadFileOutlined";
 import Sidebar from "../components/Sidebar";
 import TopNav from "../components/TopNav";
+import MobileNav from "../components/MobileNav";
 
 // Styles
 
@@ -416,7 +417,301 @@ const Profile = () => {
         </div>
       ) : (
         <div className="ProfileMobileScreen">
-          <h1>app dev</h1>
+          <MobileNav title="My Profile" />
+          <div
+            className="MobileProfile"
+            style={{
+              width: "100%",
+              position: "absolute",
+              left: "5px",
+              top: "100px",
+            }}
+          >
+            <div
+              className="ProfileContainer"
+              style={{ display: "flex", flexDirection: "row", padding: "1em" }}
+            >
+              {logo && (
+                <Avatar
+                  src={logo}
+                  alt="Logo"
+                  sx={{
+                    width: "90px",
+                    height: "90px",
+                    alignSelf: "center",
+                    border: "2px solid #0DDE65",
+                    marginBottom: ".8em",
+                    marginLeft: "1em",
+                  }}
+                />
+              )}
+              <div style={{ position: "relative" }}>
+                <StyleUploadIcon
+                  style={{ position: "absolute", left: "-15px", top: "27px" }}
+                />
+                <LogoUploadButton
+                  onClick={handleUploadButtonClick}
+                  style={{
+                    color: "#002a80",
+                    border: "2px dashed #002a80",
+                    padding: ".5em 1.5em",
+                    cursor: "pointer",
+                    margin: "1em .5em .2em 0.5em",
+                    opacity: "1",
+                  }}
+                >
+                  Upload Your Logo
+                </LogoUploadButton>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleLogoUpload}
+                  label={{ fileInput: "Upload Your Logo" }}
+                  ref={fileInputRef}
+                  style={{
+                    alignItems: "center",
+                    border: "2px dashed #002a80",
+                    cursor: "pointer",
+                    margin: "1em -2em",
+                    color: "#002a80",
+                    padding: "1em",
+                    display: "none",
+                  }}
+                />
+              </div>
+            </div>
+            <form style={{ padding: "1em" }}>
+              <TextField
+                label="Business Name"
+                variant="outlined"
+                size="small"
+                fullWidth
+                required
+                value={businessName}
+                onChange={(e) => setBusinessName(e.target.value)}
+                disabled={isEditing}
+                sx={{ marginBottom: "15px", width: "100%", marginTop: "1em" }}
+              />
+              <TextField
+                label="Email"
+                variant="outlined"
+                size="small"
+                fullWidth
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isEditing}
+                sx={{ marginBottom: "15px", width: "100%" }}
+              />
+              <div className="Contacts">
+                <TextField
+                  label="Social Media"
+                  variant="outlined"
+                  size="small"
+                  required
+                  value={socialMedia}
+                  onChange={(e) => setSocialMedia(e.target.value)}
+                  disabled={isEditing}
+                  sx={{ marginBottom: "15px", width: "100%" }}
+                />
+                <TextField
+                  label="Phone Number"
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  disabled={isEditing}
+                  sx={{
+                    marginBottom: "15px",
+                    width: "100%",
+                  }}
+                />
+              </div>
+
+              <TextField
+                label="Description"
+                variant="outlined"
+                size="large"
+                fullWidth
+                multiline
+                minRows={4}
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                disabled={isEditing}
+                sx={{ marginBottom: "15px", width: "100%" }}
+              />
+            </form>
+            <div
+              className="ProfileBtn"
+              style={{ padding: "1em", display: "flex" }}
+            >
+              <ContainedButton
+                variant="contained"
+                sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                onClick={handleSaveChanges}
+              >
+                Save Changes
+              </ContainedButton>
+              <OutlineButton
+                variant="outlined"
+                sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                onClick={handleUpdateClick}
+              >
+                Update User{" "}
+              </OutlineButton>
+            </div>
+            <Modal open={openModal} onClose={handleModalClose}>
+              <div
+                className="ModalContainer"
+                style={{
+                  background: "white",
+                  width: "90%",
+                  height: "120vh",
+                  margin: " 2em 1em",
+                  padding: "1em",
+                }}
+              >
+                <div className="ProfileContainer" style={{ display: "flex" }}>
+                  {logo && (
+                    <Avatar
+                      src={logo}
+                      alt="Logo"
+                      sx={{
+                        width: "90px",
+                        height: "90px",
+                        alignSelf: "center",
+                        border: "2px solid #0DDE65",
+                        marginBottom: ".8em",
+                      }}
+                    />
+                  )}
+                  <div>
+                    <StyleUploadIcon />
+                    <LogoUploadButton
+                      onClick={handleUploadButtonClick}
+                      style={{
+                        color: "#002a80",
+                        border: "2px dashed #002a80",
+                        padding: ".5em 2em",
+                        cursor: "pointer",
+                        margin: "1em -3.75em",
+                      }}
+                    >
+                      Upload Your Logo
+                    </LogoUploadButton>
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleLogoUpload}
+                      label={{ fileInput: "Upload Your Logo" }}
+                      ref={fileInputRef}
+                      style={{
+                        alignItems: "center",
+                        border: "2px dashed #002a80",
+                        cursor: "pointer",
+                        margin: "1em 2em",
+                        color: "#002a80",
+                        padding: "1em",
+                        opacity: "0",
+                      }}
+                    />
+                  </div>
+                </div>
+                <form>
+                  <TextField
+                    label="Business Name"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    required
+                    value={businessName}
+                    onChange={(e) => setBusinessName(e.target.value)}
+                    disabled={!isEditing}
+                    sx={{
+                      marginBottom: "15px",
+                      width: "100%",
+                    }}
+                  />
+                  <TextField
+                    label="Email"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={!isEditing}
+                    sx={{ marginBottom: "15px", width: "100%" }}
+                  />
+                  <div className="Contacts">
+                    <TextField
+                      label="Social Media"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      required
+                      value={socialMedia}
+                      onChange={(e) => setSocialMedia(e.target.value)}
+                      disabled={isEditing}
+                      sx={{ marginBottom: "15px", width: "100%" }}
+                    />
+                    <TextField
+                      label="Phone Number"
+                      variant="outlined"
+                      fullWidth
+                      size="small"
+                      required
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      disabled={isEditing}
+                      sx={{
+                        marginBottom: "15px",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+
+                  <TextField
+                    label="Description"
+                    variant="outlined"
+                    size="large"
+                    fullWidth
+                    multiline
+                    minRows={4}
+                    required
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    disabled={isEditing}
+                    sx={{ marginBottom: "15px", width: "100%" }}
+                  />
+                </form>
+                <div
+                  className="ProfileBtn"
+                  style={{ padding: "1em", display: "flex" }}
+                >
+                  <ContainedButton
+                    variant="contained"
+                    sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                    onClick={handleSaveChanges}
+                  >
+                    Save Changes
+                  </ContainedButton>
+                  <OutlineButton
+                    variant="outlined"
+                    sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                    onClick={handleModalClose}
+                  >
+                    Cancel{" "}
+                  </OutlineButton>
+                </div>
+              </div>
+            </Modal>
+          </div>
         </div>
       )}
     </div>

@@ -1,13 +1,15 @@
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useState } from "react";
-import { Typography, Button,   TextField as MuiTextField,
+import { Typography, Button,   TextField as MuiTextField,InputAdornment ,IconButton
 } from "@mui/material";
 import MobileLogo from "./MobileLogo";
 import { styled } from "@mui/material/styles";
 import Ellipse70 from "../assets/FooterEllipse.svg";
 import DesktopLogo from "../assets/DesktopColorLogo.svg"
 import {useNavigate} from 'react-router-dom';
+import Visibility from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 
 
 const OutlineButton = styled(Button)`
@@ -91,7 +93,10 @@ fieldset {
 const LogForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
+  const [passwordError, setPasswordError] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
   const navigate = useNavigate();
@@ -102,24 +107,53 @@ const LogForm = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setEmailError(false);
+
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setPasswordError(false);
+
+  };
+
+  const validateEmail = () => {
+    const isValid = /\S+@\S+\.\S+/.test(email);
+    setEmailError(!isValid);
+    return isValid;
+  };
+
+  const validatePassword = () => {
+    const isValid =
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=])[A-Za-z\d!@#$%^&*()_\-+=]{10,}$/.test(password);
+    setPasswordError(!isValid);
+    return isValid;
   };
 
   const handleCheckboxChange = (e) => {
     setRememberMe(e.target.checked);
   };
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Perform login logic here, e.g., send username and password to the server
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
 
-    // Clear the input fields
-    setEmail("");
-    setPassword("");
+    if (isEmailValid && isPasswordValid) {
+ // Login logic here
+ console.log('Email:', email);
+ console.log('Password:', password);
+
+
+   // Clear the input fields
+   setEmail("");
+   setPassword("");    }
+
+ 
   };
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -149,20 +183,42 @@ const LogForm = () => {
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
+                error={emailError}
+            helperText={emailError ? 'Invalid email address' : ''}
                
               />
               <TextField
                 label="Password"
-                type="password"
                 fullWidth
                 margin="normal"
                 required
+                type ={showPassword ? 'text' : 'password'}
                 id="password"
-                autoComplete="current-password"
+                autoComplete="current-password"       
                 value={password}
                 onChange={handlePasswordChange}
+                error={passwordError}
+                helperText={
+                  passwordError
+                    ? 'Password must be 10 characters long and contain at least one capital letter, one number, and one special character'
+                    : ''
+                }
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={handleTogglePasswordVisibility}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? <VisibilityOff  style={{color:"white"}}/> : <Visibility style={{color:"white"}}/>}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                
               />
+             
               <div style={{textAlign:"right"}}>
                 <p style={{color:"#ffffff", fontFamily:"Inter", fontSize:".7em",
               margin:"1em 0" }}>Forget password</p>
@@ -178,12 +234,13 @@ const LogForm = () => {
             />
 Always keep me logged in          </label>
         </div>
+
               <div className="LoginBtn" style={{margin:"3em 4.8em"}}>
                 <ContainedButton
                   variant="contained"
                   type="submit"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", }}
-                  onClick={expenseClick}   >
+                  >
                   Log in
                 </ContainedButton>
               </div>
@@ -226,18 +283,38 @@ Always keep me logged in          </label>
                 id="email"
                 value={email}
                 onChange={handleEmailChange}
+                error={emailError}
+            helperText={emailError ? 'Invalid email address' : ''}
              
               />
               <TextArea
                 label="Password"
-                type="password"
-                fullWidth
+ type ={showPassword ? 'text' : 'password'}                fullWidth
                 margin="normal"
                 required
                 id="password"
                 autoComplete="current-password"
                 value={password}
                 onChange={handlePasswordChange}
+                error={passwordError}
+                helperText={
+                  passwordError
+                    ? 'Password must be 10 characters long and contain at least one capital letter, one number, and one special character'
+                    : ''
+                }
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={handleTogglePasswordVisibility}
+                        edge="end"
+                        aria-label="toggle password visibility"
+                      >
+                        {showPassword ? <VisibilityOff  style={{color:"#002a80"}}/> : <Visibility style={{color:"#002a80"}}/>}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 
               />
               <div style={{textAlign:"right"}}>
@@ -260,14 +337,14 @@ Always keep me logged in          </label>
                   variant="contained"
                   type="submit"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", }}
-                  onClick={expenseClick}     >
+                       >
                   Log in
                 </OutlineButton>
               </div>
             </form>
           </div>
           <div>
-            <img src={Ellipse70} alt="footer circle" style={{position:"relative", top:"110px",left:"-50px"}}/>
+            <img src={Ellipse70} alt="footer circle" style={{position:"relative", top:"90px",left:"-50px"}}/>
             
           </div>
         </div>
