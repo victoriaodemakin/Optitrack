@@ -453,7 +453,7 @@
     }
   ],
   "start_url": "https://optimize-sme.netlify.app/",
-  "display": "standalone",
+  "display": "minimal-ui",
   "theme_color": "#002a80",
   "background_color": "#ffffff",
   "description": "This is the flagship money management application of Optimus Bank",
