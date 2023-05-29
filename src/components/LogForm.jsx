@@ -99,7 +99,6 @@ const LogForm = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-  const navigate = useNavigate();
  
 
 
