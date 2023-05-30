@@ -126,7 +126,7 @@ fieldset {
    e.preventDefault();
  };
  const navigate = useNavigate();
- const LoginClick = () => {
+ const ExpenseClick = () => {
    navigate('/Expense');
  };
 
@@ -224,7 +224,7 @@ fieldset {
                 <OutlineButton
                   variant="outlined"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", marginTop:"-2.5em"}}
-                  onClick={LoginClick} >
+                  onClick={ExpenseClick} >
                   Sign Up
                 </OutlineButton>
               </div>
@@ -317,7 +317,7 @@ fieldset {
                   variant="contained"
                   type="submit"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", }}
-                  onClick={LoginClick}>
+                  onClick={ExpenseClick}>
                   Sign up
             </OutlineButton>
             </div>
