@@ -23,6 +23,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Optimize</title>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('serviceWorker.js')
+    }
+  </script>
 </head>
 
 <body>
@@ -39,10 +44,4 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
-<script>
-  if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('serviceWorker.js')
-  }
-</script>
-
 </html>
