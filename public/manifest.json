@@ -452,8 +452,8 @@
       "sizes": "1024x1024"
     }
   ],
-  "start_url": ".",
   "display": "standalone",
+  "start_url": ".",
   "theme_color": "#002a80",
   "background_color": "#ffffff",
   "description": "This is the flagship money management application of Optimus Bank",
