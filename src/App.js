@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Signup from "./pages/Signup"
 import Expense from "./pages/Expense"
 import Profile from './pages/Profile';
+import Budgeting from './pages/Budgeting'
 function App() {
   return (
 <div>
@@ -15,6 +16,9 @@ function App() {
           <Route excat path="/Signup" element={<Signup />} />
           <Route excat path="/Expense" element={<Expense />} />
           <Route excat path="/Profile" element={<Profile />} />
+          <Route excat path="/Budgeting" element={<Budgeting />} />
+
+          
         </Routes>
 
   {/* <Home/>

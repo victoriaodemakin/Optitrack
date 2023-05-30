@@ -15,6 +15,8 @@ import BudgetingIcon from "@mui/icons-material/MonetizationOnOutlined";
 import BarChartIcon from "@mui/icons-material/BarChartOutlined";
 import HistoryIcon from "@mui/icons-material/HistoryOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useNavigate } from "react-router-dom";
+
 
 
 const StyledListItem = styled(ListItem)`
@@ -77,7 +79,15 @@ const Sidebar = () => {
   const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
   };
+  const navigate = useNavigate();
+  const BudgetClick = () => {
+    navigate("/Budgeting");
+  };
  
+  const ExpenseClick = () => {
+    navigate('/Expense');
+  };
+
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
@@ -124,7 +134,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <StyledExpenseIcon />
                 </ListItemIcon>
-                <ListTypography variant="h6">Capture Expense</ListTypography>  
+                <ListTypography variant="h6"  onClick={ExpenseClick}>Capture Expense</ListTypography>  
               </StyledListItem>
 
               <StyledListItem
@@ -135,7 +145,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <StyledBudgetingIcon />
                 </ListItemIcon>
-                <ListTypography variant="h6">Budgeting</ListTypography>  
+                <ListTypography variant="h6" onClick={BudgetClick}>Budgeting</ListTypography>  
               </StyledListItem>
 
               <StyledListItem
