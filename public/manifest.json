@@ -452,7 +452,7 @@
       "sizes": "1024x1024"
     }
   ],
-  "start_url": "https://optimize-sme.netlify.app/",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#002a80",
   "background_color": "#ffffff",
