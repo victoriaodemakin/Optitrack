@@ -21,19 +21,19 @@ const [lastName, setLastName] = useState('');
 
 
  const OutlineButton = styled(Button)`
- background: #002a80;
+ background: #003BB3;
  border-radius: 4px;
  font-style: normal;
  font-weight: 500;
  font-size: 1em;
  color: #ffff;
  width: 150px;
- border: 2px solid #002a80;
+ border: 2px solid #003BB3;
  margin-left: .3em;
  box-shadow: none;
  &:hover  {
-  border-color: #002a80;
-  color:#002a80;
+  border-color: #003BB3;
+  color:#003BB3;
 }
 `;
 

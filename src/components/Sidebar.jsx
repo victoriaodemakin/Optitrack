@@ -177,7 +177,9 @@ const Sidebar = () => {
           </div>
         </StyledDrawer>
       ) : (
-        <h1>This is the hero for mobile devices.</h1>
+        <div>
+          
+        </div>
       )}
     </div>
   );

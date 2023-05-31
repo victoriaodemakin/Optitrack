@@ -73,6 +73,12 @@ const MobileNav = (props) => {
   const ProfileClick = () => {
     navigate("/Profile");
   };
+  const ExpenseClick = () => {
+    navigate('/Expense');
+  };
+  const BudgetClick = () => {
+    navigate("/Budgeting");
+  };
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (e) => {
@@ -159,7 +165,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <MoneyIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Capture Expense" />
+            <ListItemText primary="Capture Expense" onClick={ExpenseClick} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -171,7 +177,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <PieChartIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Budgeting" />
+            <ListItemText primary="Budgeting" onClick={BudgetClick}/>
           </ListItem>
           <ListItem button>
             <ListItemIcon>

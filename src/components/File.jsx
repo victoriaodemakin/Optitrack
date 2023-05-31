@@ -1,96 +1,135 @@
-import React, { useState } from 'react';
-import { TextField, Button, Avatar } from '@mui/material';
-import { CloudUpload } from '@mui/icons-material';
-import styled from 'styled-components';
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Modal,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from '@mui/material';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-`;
-
-const LogoUploadButton = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-`;
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 400px;
-`;
-
-const RegisterPage = () => {
-  const [logo, setLogo] = useState('');
-  const [businessName, setBusinessName] = useState('');
-  const [email, setEmail] = useState('');
-  const [socialMedia, setSocialMedia] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+const BudgetScreen = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [budgets, setBudgets] = useState([]);
+  const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [budgetName, setBudgetName] = useState('');
 
-  const handleLogoUpload = (event) => {
-    const file = event.target.files[0];
-    setLogo(URL.createObjectURL(file));
+  const openModal = () => {
+    setShowModal(true);
   };
 
-  const handleSaveChanges = () => {
-    // Save changes logic goes here
+  const closeModal = () => {
+    setShowModal(false);
   };
 
-  const handleUpdateChanges = () => {
-    // Update changes logic goes here
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newBudget = {
+      amount,
+      description,
+      category,
+      budgetName,
+    };
+
+    setBudgets([...budgets, newBudget]);
+    setAmount('');
+    setDescription('');
+    setCategory('');
+    closeModal();
+  };
+
+  const handleAddBudget = () => {
+    setBudgetName('');
+    openModal();
   };
 
   return (
-    <Container>
-      <h2>Register Your Business</h2>
-      <LogoUploadButton>
-        <CloudUpload />
-        <input type="file" accept="image/*" onChange={handleLogoUpload} style={{display:"none" border:"2px solid red"}} />
-        Upload Your Logo
-      </LogoUploadButton>
-      {logo && <Avatar src={logo} alt="Logo" sx={{ width: '120px', height: '120px', alignSelf: 'center', border:"2px solid #0DDE65" }}/>}
-      <FormContainer>
-        <TextField
-          label="Business Name"
-          value={businessName}
-          onChange={(event) => setBusinessName(event.target.value)}
-        />
-        <TextField
-          label="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <TextField
-          label="Social Media"
-          value={socialMedia}
-          onChange={(event) => setSocialMedia(event.target.value)}
-        />
-        <TextField
-          label="Phone Number"
-          value={phoneNumber}
-          onChange={(event) => setPhoneNumber(event.target.value)}
-        />
-        <TextField
-          label="Description"
-          multiline
-          rows={4}
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <Button variant="contained" color="primary" onClick={handleSaveChanges}>
-          Save Changes
-        </Button>
-        <Button variant="contained" color="primary" onClick={handleUpdateChanges}>
-          Update Changes
-        </Button>
-      </FormContainer>
-    </Container>
+    <div>
+      <h1>Budgeting Screen</h1>
+      <Button variant="contained" onClick={handleAddBudget}>
+        Add New Budget
+      </Button>
+
+      {budgets.length > 0 ? (
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Budget Name</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Category</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {budgets.map((budget, index) => (
+              <TableRow key={index}>
+                <TableCell>{budget.budgetName}</TableCell>
+                <TableCell>{budget.amount}</TableCell>
+                <TableCell>{budget.description}</TableCell>
+                <TableCell>{budget.category}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <p>No budgets available.</p>
+      )}
+
+      <Modal open={showModal} onClose={closeModal}>
+        <div className="modal">
+          <div className="modal-content">
+            <Button variant="contained" onClick={closeModal}>
+              Close
+            </Button>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                label="Budget Name"
+                value={budgetName}
+                onChange={(e) => setBudgetName(e.target.value)}
+                required
+              />
+              <TextField
+                type="number"
+                label="Amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                required
+              />
+              <TextField
+                label="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+              <FormControl required>
+                <InputLabel>Category</InputLabel>
+                <Select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <MenuItem value="">Select Category</MenuItem>
+                  <MenuItem value="Food">Food</MenuItem>
+                  <MenuItem value="Utilities">Utilities</MenuItem>
+                  <MenuItem value="Entertainment">Entertainment</MenuItem>
+                </Select>
+              </FormControl>
+              <Button type="submit" variant="contained">
+                Submit
+              </Button>
+            </form>
+          </div>
+        </div>
+      </Modal>
+    </div>
   );
 };
 
-export default RegisterPage;
+export default BudgetScreen;

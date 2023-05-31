@@ -17,9 +17,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
-  border: 2px solid #002a80;
+  border: 2px solid #003BB3;
   margin-left: 1em;
   box-shadow: none;
 `;
@@ -37,7 +37,7 @@ const ContainedButton = styled(Button)`
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
   &:hover {
     background-color: transparent;

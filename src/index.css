@@ -78,10 +78,10 @@ span {
   margin: 22vh 0;
 }
 .DesktopText {
-width: 50% ;
+  width: 50%;
 }
 .DesktopImages {
-width: 60%;
+  width: 60%;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -125,117 +125,114 @@ width: 60%;
   bottom: 45px;
   width: 43%;
 }
-.FormContainer{
+.FormContainer {
   position: absolute;
   top: 100px;
   padding-right: 1em;
 }
-.DesktopLoginForm h3{
-font-family: 'Urbanist';
-font-style: normal;
-font-weight: 600;
-font-size: 1.5em;
-line-height: 29px;
-text-align: center;
-color: #ffffff;
+.DesktopLoginForm h3 {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
 }
 .DesktopLoginForm h4 {
-  font-family: 'Urbanist';
-font-style: normal;
-font-weight: 400;
-font-size: 1em;
-line-height: 29px;
-text-align: center;
-color: #ffffff;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
 }
-.DesktopLoginForm p{
-  font-family: 'Urbanist';
-font-style: normal;
-font-weight: 600;
-font-size: 1em;
-line-height: 29px;
-text-align: center;
-color: #ffffff;
-
+.DesktopLoginForm p {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
 }
 
-.DesktopLoginScreen{
+.DesktopLoginScreen {
   display: grid;
   grid-template-columns: 1.5fr 4fr;
   height: 100vh;
 }
-.LoginContainer{
+.LoginContainer {
   background: #002a80;
 }
-.TextContainer{
-  background: #FFFFFF;
+.TextContainer {
+  background: #ffffff;
   margin: 7em 0;
   padding: 0 1em;
 }
-.TextContainer h2{
-font-family: 'Urbanist';
-font-style: normal;
-font-weight: 700;
-font-size: 90px;
-line-height: 100px;
-text-align: center;
-letter-spacing: -0.07em;
-color: #002a80;
+.TextContainer h2 {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 90px;
+  line-height: 100px;
+  text-align: center;
+  letter-spacing: -0.07em;
+  color: #002a80;
 }
 .MobileItem {
-position: absolute;
-top:78px;
-left: 70px;
-
+  position: absolute;
+  top: 78px;
+  left: 70px;
 }
-.MobileItem h3{
-font-family: 'Urbanist';
-font-style: normal;
-font-weight: 700;
-font-size: 1.2em;
-text-align: center;
-color: #002a80;
-line-height: 30px;
-
+.MobileItem h3 {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-align: center;
+  color: #002a80;
+  line-height: 30px;
 }
-.MobileItem h5{
-font-family: 'Urbanist';
-font-style: normal;
-font-weight: 500;
-font-size: 1em;
-text-align: center;
-color: #002a80;
+.MobileItem h5 {
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1em;
+  text-align: center;
+  color: #002a80;
 }
-.DesktopSignupScreen{
+.DesktopSignupScreen {
   display: grid;
   grid-template-columns: 1.5fr 4fr;
   height: 100vh;
   overflow-y: hidden;
 }
-.DesktopSignupForm h1{
-  font-family: 'Urbanist';
+.DesktopSignupForm h1 {
+  font-family: "Urbanist";
   font-style: normal;
   font-weight: 600;
   font-size: 2em;
   line-height: 50px;
   text-align: center;
   color: #ffffff;
-  bottom:50px
+  bottom: 50px;
 }
 
-.DesktopSignupForm  h2{        
-  font-family: 'Urbanist';
+.DesktopSignupForm h2 {
+  font-family: "Urbanist";
   font-style: normal;
   font-weight: 600;
   font-size: 2em;
   line-height: 40px;
   text-align: center;
   color: #002a80;
-  bottom:50px
+  bottom: 50px;
 }
 
-.DesktopSignupForm  p{        
-  font-family: 'Urbanist';
+.DesktopSignupForm p {
+  font-family: "Urbanist";
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
@@ -244,6 +241,18 @@ color: #002a80;
   color: #002a80;
 }
 
-.SignupContainer{
+.SignupContainer {
   background: #002a80;
+}
+.ModalContent {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ModalCta {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }

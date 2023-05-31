@@ -15,7 +15,7 @@ import MobileNav from "../components/MobileNav";
 // Styles
 
 const ContainedButton = styled(Button)`
-  background: #002a80;
+  background: #003BB3;
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
@@ -28,9 +28,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
-  border: 2px solid #002a80;
+  border: 2px solid #003BB3;
   margin-left: 1em;
 `;
 
@@ -266,7 +266,7 @@ const Profile = () => {
               </OutlineButton>
             </div>
           </div>
-          <Modal open={openModal} onClose={handleModalClose}>
+          <Modal open={openModal} onClose={handleModalClose} sx={{background:"rgba(0,42,128,0.5)"}} >
             <div
               className="ModalContainer"
               style={{
@@ -562,7 +562,7 @@ const Profile = () => {
                 Update User{" "}
               </OutlineButton>
             </div>
-            <Modal open={openModal} onClose={handleModalClose}>
+            <Modal open={openModal} onClose={handleModalClose} sx={{background:"rgba(0,42,128,0.5)"}} >
               <div
                 className="ModalContainer"
                 style={{
