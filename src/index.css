@@ -3,6 +3,7 @@
 *::before {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  text-overflow: inherit;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   padding: 0;
@@ -256,3 +257,50 @@ span {
   gap: 10px;
   justify-content: flex-end;
 }
+/* .TableContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FAFCFF;
+  padding: 2em;
+}
+.TableHeadRow{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #8080803b;
+}
+.TableHeadCell{
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8em;
+  line-height: 28px;
+  text-align: center;
+  color: #666666;
+}
+.TableRow{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #FAFCFF;
+  margin-bottom: 1em;
+}
+.TableCell{
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+  padding: 8px;
+  text-align: center;
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8em;
+  line-height: 28px;
+  text-align: center;
+  color: #666666;
+  word-wrap: break-word;
+} */

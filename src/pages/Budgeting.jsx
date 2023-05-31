@@ -51,8 +51,8 @@ const MobileTableCell = styled(TableCell)`
   && {
     white-space: wrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 70px;
+    text-overflow: inherit;
+    max-width: 200px;
   }
 `;
 
@@ -463,6 +463,38 @@ Simulation
    
 
       {budgets.length > 0 ? (
+      //   <table>
+      //  <thead>
+      //     <tr className="table-head-row">
+      //       <th className="table-head-cell">Budget Name</th>
+      //       <th className="table-head-cell">Amount</th>
+      //       <th className="table-head-cell">Description</th>
+      //       <th className="table-head-cell">Category</th>
+      //       <th className="table-head-cell">Delete/Edit</th>
+      //     </tr>
+      //   </thead>
+         
+      //   <tbody>
+      //     {budgets.map((budget, index) => (
+      //       <tr key={index} className="table-row">
+      //         <td className="table-cell">{budget.budgetName}</td>
+      //         <td className="table-cell">{`${budget.amount} ${budget.currency}`}</td>
+      //         <td className="table-cell">{budget.description}</td>
+      //         <td className="table-cell">{budget.category}</td>
+      //         <td className="table-cell">
+      //         <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
+      //               <DeleteIcon />
+      //             </IconButton>
+      //             <IconButton onClick={() => handleEdit(index)} sx={{color:"#002a80"}}>
+      //               <EditIcon />
+      //             </IconButton>
+      //         </td>
+      //       </tr>
+      //     ))}
+      //   </tbody>
+      //   </table>
+ 
+      
         <Table sx={{maxWidth:"auto", }}>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px",maxWidth:"50%",background:"red" }}>
