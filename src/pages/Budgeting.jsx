@@ -15,7 +15,7 @@ import {
   Button,
   Table as MUITable,
   TableBody,
-  TableCell,
+  TableCell , 
   TableHead,
   TableRow,
   TextField as MuiTextField,
@@ -35,22 +35,27 @@ const ContainedButton = styled(Button)`
   font-weight: 700;
   font-size: 1em;
   color: #ffffff;
-  width: 200px;
   font-family: "Urbanist";
+  height:"200px"
   box-shadow: none;
-  padding: .6em;
-
-
   &:hover {
     background-color: transparent;
     border: 2px solid #003BB3;
     color: #003BB3; 
     box-shadow: none;
-    padding: .6em;
 
 
   }
 `;
+const MobileTableCell = styled(TableCell)`
+  && {
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70px;
+  }
+`;
+
 const OutlineButton = styled(Button)`
   background: #0dde6500;
   border-radius: 4px;
@@ -127,6 +132,7 @@ border:1px solid #002a80 ;
 }
 `
 const Table = styled(MUITable)`
+
 
 th {
     color: #666666;
@@ -438,18 +444,18 @@ Simulation
 
         </div>
     ) : (
-      <div className="MobileScreen" style={{width:"100%",}}>
+      <div className="MobileScreen" style={{width:"100%"}}>
         <MobileNav title="Budgeting" />
        
         
         <div className="MobileBudget" style={{ position: "absolute",top: "80px", zIndex:"999", padding:"1em", width:"100%"}}>
         <div>
           
-          <div className="BtnContainer" style={{ display:"flex", flexDirection:"column",width:"100%"}}>
-          <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />} style={{width:"188px", marginBottom:"1em"}}>
-        Create Budget
+          <div className="BtnContainer" style={{ display:"flex", justifyContent:"space-between",width:"100%"}}>
+          <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />} style={{width:"165px", marginBottom:"2em"}}>
+        add Budget
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"188px", marginBottom:"2em"}}>
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"165px", marginBottom:"2em",marginLeft:".3em"}}>
         get Budget
       </AltButton>
       
@@ -460,33 +466,33 @@ Simulation
         <Table sx={{maxWidth:"auto", }}>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px",maxWidth:"50%",background:"red" }}>
-              <TableCell  sx={{height:"20px"}}>Budget Name</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell>Delete/Edit</TableCell>
+              <MobileTableCell  sx={{height:"20px"}}>Budget Name</MobileTableCell>
+              <MobileTableCell>Amount</MobileTableCell>
+              <MobileTableCell>Description</MobileTableCell>
+              <MobileTableCell>Category</MobileTableCell>
+              <MobileTableCell>Delete/Edit</MobileTableCell>
 
             </TableRow>
           </TableHead>
           <TableBody>
             {budgets.map((budget, index) => (
               <TableRow key={index} >
-                <TableCell >{budget.budgetName}</TableCell>
-                <TableCell>{`${budget.amount} ${budget.currency}`}</TableCell>
-                <TableCell>{budget.description}</TableCell>
-                <TableCell>{budget.category}</TableCell>
-                <TableCell>
+                <MobileTableCell >{budget.budgetName}</MobileTableCell>
+                <MobileTableCell>{`${budget.amount} ${budget.currency}`}</MobileTableCell>
+                <MobileTableCell>{budget.description}</MobileTableCell>
+                <MobileTableCell>{budget.category}</MobileTableCell>
+                <MobileTableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
                     <DeleteIcon />
                   </IconButton>
                   <IconButton onClick={() => handleEdit(index)} sx={{color:"#002a80"}}>
                     <EditIcon />
                   </IconButton>
-                </TableCell>
+                </MobileTableCell>
               </TableRow>
             ))}
           </TableBody>
-          <ContainedButton variant="contained" color="primary" startIcon={<SaveIcon />} onClick={handleSaveTable} style={{marginTop:"9em"}}>
+          <ContainedButton variant="contained" color="primary" startIcon={<SaveIcon />} onClick={handleSaveTable} style={{marginTop:"9em", width:"168px"}}>
         Save Table
       </ContainedButton>
         </Table>
@@ -494,11 +500,11 @@ Simulation
        
         
       ) : (
-<div className="NoBudget" style={{position:"relative"}}>
-<img src={MobileBudgetImg} alt="desktop color logo" style={{width:"80%",margin:"6em 0" ,position:"absolute", left:"5em"}}/>
+<div className="NoBudget" style={{position:"relative", display:"flex",flexDirection:"column", justifyContent:"center", alignContent:"center"}}>
+<img src={MobileBudgetImg} alt="desktop color logo" style={{width:"80%",margin:"6em auto 2em 5em "}}/>
 <p style={{color: "#002a80",
-  fontFamily: "Urbanist",fontWeight: "500",
-  fontSize:"1em",position:"absolute", top:"300px", left:"6em",marginBottom:"9em"
+  fontFamily: "Urbanist",fontWeight: "500",margin:"0 auto"
+  // fontSize:"1em",position:"absolute", top:"300px", left:"6em",marginBottom:"9em"
 }}>No Budget Available</p>
 </div>     
 
