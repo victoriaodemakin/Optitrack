@@ -14,9 +14,10 @@ import {useNavigate} from 'react-router-dom';
 const StyledAppBar = styled(AppBar)`
 background-color: #002a80;
 position: absolute;
-width: 1065px;
+width: 100%;
 height: 58px;
-left: 300.5px;
+left:0px;
+
 top: 0px;
 box-shadow: none;
 `;

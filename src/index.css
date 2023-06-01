@@ -247,3 +247,10 @@ color: #002a80;
 .SignupContainer{
   background: #002a80;
 }
+.tableC{
+  display: flex;
+  padding-left: 300px;
+  flex-direction: column;
+  border:2px solid red;
+  align-items: center;
+}

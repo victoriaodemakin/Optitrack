@@ -3,25 +3,22 @@ import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Paper
 import { styled } from '@mui/system';
 
 const StyledTableContainer = styled(TableContainer)`
-  position: absolute;
   top: 60px; 
   left: 320px; 
-  width:100%;
+  width:90%;
 `;
 
 const ExpensesComponent = () => {
   const expensesData = [
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
-    { date: '2023-05-01', type: 'Capital', description: '48%', time: '10:00 AM', business: 'Tunde Malimi', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
+    {  categorydescription: '48%', category: '******', amount: 100 },
   ];
 
   return (
@@ -30,11 +27,7 @@ const ExpensesComponent = () => {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Time Transaction</TableCell>
-            <TableCell>Business Name</TableCell>
-            <TableCell>Category</TableCell>
+            <TableCell>Categorydescription</TableCell>
             <TableCell>Amount</TableCell>
           </TableRow>
         </TableHead>
@@ -42,11 +35,7 @@ const ExpensesComponent = () => {
           {expensesData.map((expense, index) => (
             <TableRow key={index}>
               <TableCell>{expense.date}</TableCell>
-              <TableCell>{expense.type}</TableCell>
-              <TableCell>{expense.description}</TableCell>
-              <TableCell>{expense.time}</TableCell>
-              <TableCell>{expense.business}</TableCell>
-              <TableCell>{expense.category}</TableCell>
+              <TableCell>{expense.categorydesription}</TableCell>  
               <TableCell>{expense.amount}</TableCell>
             </TableRow>
           ))}

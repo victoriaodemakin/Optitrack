@@ -14,6 +14,7 @@ function App() {
           <Route excat path="/Login" element={<Login />} />
           <Route excat path="/Signup" element={<Signup />} />
           <Route excat path="/Expense" element={<Expense />} />
+          <Route excat path="/Revenue" element={<Expense />} />
           <Route excat path="/Profile" element={<Profile />} />
         </Routes>
 
