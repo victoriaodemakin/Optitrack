@@ -79,6 +79,14 @@ const MobileNav = (props) => {
   const BudgetClick = () => {
     navigate("/Budgeting");
   };
+  const SimulationClick = () => {
+    navigate("/Simulation");
+  };
+  const DashboardClick = () => {
+    navigate("/Dashboard");
+  };
+
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (e) => {
@@ -153,7 +161,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <DashboardIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" sx={{ color: "white" }} />
+            <ListItemText primary="Dashboard" sx={{ color: "white" }} onClick={DashboardClick} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -183,7 +191,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <InsertChartIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Stimulation" />
+            <ListItemText primary="Simulation" onClick={SimulationClick} />
           </ListItem>
         </List>
         <div>
