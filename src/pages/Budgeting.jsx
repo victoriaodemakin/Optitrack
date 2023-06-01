@@ -9,7 +9,9 @@ import NoBudgetImg from '../assets/Nobugdet.svg'
 import MobileBudgetImg from '../assets/cost 1.svg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';// import { styled as muiStyled } from '@mui/system';
+import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
+import DescriptionIcon from '@mui/icons-material/Description';
+
 
 import {
   Button,
@@ -163,6 +165,7 @@ th {
 
 const Budgeting = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [budgets, setBudgets] = useState([]);
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
@@ -174,6 +177,9 @@ const Budgeting = () => {
   const [editAmount, setEditAmount] = useState('');
   const [editDescription, setEditDescription] = useState('');
   const [editCategory, setEditCategory] = useState('');
+
+  const [detailsDescription, setDetailsDescription] = useState('');
+  const [detailsCategory, setDetailsCategory] = useState('');
 
   const openModal = () => {
     setShowModal(true);
@@ -231,6 +237,31 @@ const Budgeting = () => {
     setCurrency(budget.currency)
     openModal();
   };
+  const openDetailsModal = () => {
+    setShowDetailsModal(true);
+  };
+
+  const closeDetailsModal = () => {
+    setShowDetailsModal(false);
+  };
+
+  const handleViewDetails = (budget) => {
+    setDetailsDescription(budget.description);
+    setDetailsCategory(budget.category);
+    openDetailsModal();
+  };
+  const handleEditDescription = () => {
+    setEditDescription(detailsDescription);
+    setEditCategory(detailsCategory);
+    openModal();
+    closeDetailsModal();
+  };
+  const handleDeleteBudget = () => {
+    handleDelete(editingIndex);
+    setEditingIndex(null);
+    closeDetailsModal();
+  };
+
   const handleUpdate = (e) => {
     e.preventDefault();
 
@@ -282,7 +313,7 @@ Simulation
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
-              <TableCell  sx={{height:"20px", padding:".5em"}}>Budget Name</TableCell>
+              <TableCell>Budget Name</TableCell>
               <TableCell>Amount</TableCell>
               <TableCell>Description</TableCell>
               <TableCell>Category</TableCell>
@@ -463,46 +494,15 @@ Simulation
    
 
       {budgets.length > 0 ? (
-      //   <table>
-      //  <thead>
-      //     <tr className="table-head-row">
-      //       <th className="table-head-cell">Budget Name</th>
-      //       <th className="table-head-cell">Amount</th>
-      //       <th className="table-head-cell">Description</th>
-      //       <th className="table-head-cell">Category</th>
-      //       <th className="table-head-cell">Delete/Edit</th>
-      //     </tr>
-      //   </thead>
-         
-      //   <tbody>
-      //     {budgets.map((budget, index) => (
-      //       <tr key={index} className="table-row">
-      //         <td className="table-cell">{budget.budgetName}</td>
-      //         <td className="table-cell">{`${budget.amount} ${budget.currency}`}</td>
-      //         <td className="table-cell">{budget.description}</td>
-      //         <td className="table-cell">{budget.category}</td>
-      //         <td className="table-cell">
-      //         <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
-      //               <DeleteIcon />
-      //             </IconButton>
-      //             <IconButton onClick={() => handleEdit(index)} sx={{color:"#002a80"}}>
-      //               <EditIcon />
-      //             </IconButton>
-      //         </td>
-      //       </tr>
-      //     ))}
-      //   </tbody>
-      //   </table>
- 
+  
       
-        <Table sx={{maxWidth:"auto", }}>
-          <TableHead>
-            <TableRow   sx={{ marginBottom: "25px",maxWidth:"50%",background:"red" }}>
-              <MobileTableCell  sx={{height:"20px"}}>Budget Name</MobileTableCell>
+        <Table >
+          <TableHead >
+            <TableRow >
+              <MobileTableCell >Budget Name</MobileTableCell>
               <MobileTableCell>Amount</MobileTableCell>
-              <MobileTableCell>Description</MobileTableCell>
-              <MobileTableCell>Category</MobileTableCell>
-              <MobileTableCell>Delete/Edit</MobileTableCell>
+              <MobileTableCell>Details</MobileTableCell>
+           
 
             </TableRow>
           </TableHead>
@@ -511,7 +511,12 @@ Simulation
               <TableRow key={index} >
                 <MobileTableCell >{budget.budgetName}</MobileTableCell>
                 <MobileTableCell>{`${budget.amount} ${budget.currency}`}</MobileTableCell>
-                <MobileTableCell>{budget.description}</MobileTableCell>
+                <MobileTableCell>
+                <IconButton onClick={() => handleViewDetails(budget)}>
+                  <DescriptionIcon />
+                </IconButton>
+              </MobileTableCell>
+                {/* <MobileTableCell>{budget.description}</MobileTableCell>
                 <MobileTableCell>{budget.category}</MobileTableCell>
                 <MobileTableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
@@ -520,7 +525,7 @@ Simulation
                   <IconButton onClick={() => handleEdit(index)} sx={{color:"#002a80"}}>
                     <EditIcon />
                   </IconButton>
-                </MobileTableCell>
+                </MobileTableCell> */}
               </TableRow>
             ))}
           </TableBody>
@@ -653,6 +658,34 @@ Simulation
           </div>
         </div>
       </Modal>
+
+      <Modal open={showDetailsModal} onClose={closeDetailsModal}>
+        <div className='ModalContent'>
+        <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Description</TableCell>
+                <TableCell>Category</TableCell>
+                <TableCell>Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>{detailsDescription}</TableCell>
+                <TableCell>{detailsCategory}</TableCell>
+                <TableCell>
+                  <IconButton onClick={handleEditDescription}>
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton onClick={handleDeleteBudget}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </Modal>
     </div>
         </div>
        
@@ -662,17 +695,7 @@ Simulation
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     

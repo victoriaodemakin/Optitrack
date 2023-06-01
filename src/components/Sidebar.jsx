@@ -87,6 +87,9 @@ const Sidebar = () => {
   const ExpenseClick = () => {
     navigate('/Expense');
   };
+  const SimulationClick = () => {
+    navigate("/Simulation");
+  };
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -156,7 +159,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <StyledBarChartIcon />
                 </ListItemIcon>
-                <ListTypography variant="h6">Simulation</ListTypography>              
+                <ListTypography variant="h6" onClick={SimulationClick}>Simulation</ListTypography>              
                 </StyledListItem>
 
               <StyledListItem
