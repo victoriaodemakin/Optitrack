@@ -16,13 +16,14 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 const StyledAppBar = styled(AppBar)`
-  background-color: #002a80;
-  position: absolute;
-  width: 1065px;
-  height: 58px;
-  left: 300.5px;
-  top: 0px;
-  box-shadow: none;
+background-color: #002a80;
+position: absolute;
+width: 100%;
+height: 58px;
+left:0px;
+
+top: 0px;
+box-shadow: none;
 `;
 
 const StyledToolbar = styled(Toolbar)`
