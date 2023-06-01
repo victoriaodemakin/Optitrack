@@ -6,6 +6,7 @@ import Signup from "./pages/Signup"
 import Expense from "./pages/Expense"
 import Profile from './pages/Profile';
 import Budgeting from './pages/Budgeting'
+import Simulation from './pages/Simulation'
 function App() {
   return (
 <div>
@@ -18,6 +19,7 @@ function App() {
           <Route excat path="/Revenue" element={<Expense />} />
           <Route excat path="/Profile" element={<Profile />} />
           <Route excat path="/Budgeting" element={<Budgeting />} />
+          <Route excat path="/Simulation" element={<Simulation />} />
 
           
         </Routes>
