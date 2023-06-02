@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery"
 import TopNav from "../components/TopNav";
+// import { Card } from '@mui/material';
 import Sidebar from "../components/Sidebar";
 import MobileNav from "../components/MobileNav";
 import { styled } from "@mui/material/styles";
@@ -104,6 +105,13 @@ const TextField = styled(MuiTextField)`
   .MuiOutlinedInput-root {
     border-radius: 8px;
     color: #002a80;
+import Table from "../components/Table";
+import WalletCard from "../components/WalletCard";
+
+// import Transaction from "../components/Transaction";
+// import CardWallet from "../components/CardWallet";
+
+// import { styled } from "@mui/material/styles";
 
     &:hover fieldset {
       border-color: #002a80;
