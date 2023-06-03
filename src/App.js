@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import Signup from "./pages/Signup"
 import Expense from "./pages/Expense"
+import Revenue from "./pages/Revenue"
 import Profile from './pages/Profile';
 import Budgeting from './pages/Budgeting'
 import Simulation from './pages/Simulation'
@@ -19,7 +20,7 @@ function App() {
           <Route excat path="/Login" element={<Login />} />
           <Route excat path="/Signup" element={<Signup />} />
           <Route excat path="/Expense" element={<Expense />} />
-          <Route excat path="/Revenue" element={<Expense />} />
+          <Route excat path="/Revenue" element={<Revenue />} />
           <Route excat path="/Profile" element={<Profile />} />
           <Route excat path="/Budgeting" element={<Budgeting />} />
           <Route excat path="/Simulation" element={<Simulation />} />
