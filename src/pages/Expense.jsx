@@ -7,11 +7,11 @@ import MobileNav from "../components/MobileNav";
 import { styled } from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
 import NoExpenseImg from '../assets/Nobugdet.svg'
-import MobileBudgetImg from '../assets/cost 1.svg'
+import MobileExpenseImg from '../assets/cost 1.svg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
-import DescriptionIcon from '@mui/icons-material/Description';
+import descriptionIcon from '@mui/icons-material/Description';
 
 
 import {
@@ -174,19 +174,19 @@ th {
 const Expense = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [budgets, setBudgets] = useState([]);
+  const [Expense, setExpense] = useState([]);
   const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
+  const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
-  const [budgetName, setBudgetName] = useState('');
+  const [expenseName, setExpenseName] = useState('');
   const [currency, setCurrency] = useState('NGN'); // Default currency is Naira
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editAmount, setEditAmount] = useState('');
-  const [editDescription, setEditDescription] = useState('');
+  const [editcategorydescription, setEditcategorydescription] = useState('');
   const [editCategory, setEditCategory] = useState('');
 
-  const [detailsDescription, setDetailsDescription] = useState('');
+  const [detailscategorydescription, setDetailscategorydescription] = useState('');
   const [detailsCategory, setDetailsCategory] = useState('');
 
   const openModal = () => {
@@ -202,15 +202,15 @@ const Expense = () => {
 
     const newExpense = {
       amount,
-      description,
+      categorydescription,
       category,
-      ExpenseName,
+      expenseName,
       currency,
     };
 
-    setExpenses([...Expenses, newExpense]);
+    setExpense([...Expense, newExpense]);
     setAmount('');
-    setDescription('');
+    setcategorydescription('');
     setCategory('');
     setCurrency('NGN')
     closeModal();
@@ -231,16 +231,16 @@ const Expense = () => {
   };
 
   const handleDelete = (index) => {
-    const updatedExpenses = [...Expenses];
-    updatedExpenses.splice(index, 1);
-    setExpenses(updatedExpenses);
+    const updatedExpense = [...Expense];
+    updatedExpense.splice(index, 1);
+    setExpense(updatedExpense);
   };
 
   const handleEdit = (index) => {
     setEditingIndex(index);
-    const Expense = Expenses[index];
+    const Expense = Expense[index];
     setEditAmount(Expense.amount);
-    setEditDescription(Expense.description);
+    setEditcategorydescription(Expense.categorydescription);
     setEditCategory(Expense.category);
     setCurrency(Expense.currency)
     openModal();
@@ -254,12 +254,12 @@ const Expense = () => {
   };
 
   const handleViewDetails = (Expense) => {
-    setDetailsDescription(Expense.description);
+    setDetailscategorydescription(Expense.categorydescription);
     setDetailsCategory(Expense.category);
     openDetailsModal();
   };
-  const handleEditDescription = () => {
-    setEditDescription(detailsDescription);
+  const handleEditcategorydescription = () => {
+    setEditcategorydescription(detailscategorydescription);
     setEditCategory(detailsCategory);
     openModal();
     closeDetailsModal();
@@ -273,19 +273,19 @@ const Expense = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    const updatedExpenses = [...Expenses];
-    updatedExpenses[editingIndex] = {
+    const updatedExpense = [...Expense];
+    updatedExpense[editingIndex] = {
       amount: editAmount,
-      description: editDescription,
+      categorydescription: editcategorydescription,
       category: editCategory,
-      ExpenseName,
+      expenseName,
       currency,
     };
 
-    setExpenses(updatedExpenses);
+    setExpense(updatedExpense);
     setEditingIndex(null);
     setEditAmount('');
-    setEditDescription('');
+    setEditcategorydescription('');
     setEditCategory('');
     closeModal();
   };
@@ -317,24 +317,24 @@ Simulation
           </div>
    
 
-      {Expenses.length > 0 ? (
+      {Expense.length > 0 ? (
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
               <TableCell>Expense Name</TableCell>
               <TableCell>Amount</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>categorydescription</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Delete/Edit</TableCell>
 
             </TableRow>
           </TableHead>
           <TableBody>
-            {Expenses.map((Expense, index) => (
+            {Expense.map((Expense, index) => (
               <TableRow key={index} >
-                <TableCell >{Expense.ExpenseName}</TableCell>
+                <TableCell >{Expense.expenseName}</TableCell>
                 <TableCell>{`${Expense.amount} ${Expense.currency}`}</TableCell>
-                <TableCell>{Expense.description}</TableCell>
+                <TableCell>{Expense.categorydescription}</TableCell>
                 <TableCell>{Expense.category}</TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
@@ -376,14 +376,14 @@ Simulation
               }}>
             <div className="formConatiner">
             <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-          <h2>Create a Expense</h2>
-          <p>Create your wallet, Create your Expense, We do the Tracking </p>
+          <h2>Add Expense</h2>
+          <p> Track your expenses and manage your money effectively.</p>
           
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
                 label="Expense Name"
-                value={ExpenseName}
+                value={expenseName}
                 onChange={(e) => setExpenseName(e.target.value)}
                 required
                 sx={{ marginBottom: "10px", width: "569px", marginTop: "1em" }}
@@ -423,13 +423,13 @@ Simulation
               </div>
              
               <TextField
-                label="Description"
-                value={editingIndex !== null ? editDescription : description}
+                label="categorydescription"
+                value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
-                    setEditDescription(e.target.value);
+                    setEditcategorydescription(e.target.value);
                   } else {
-                    setDescription(e.target.value);
+                    setcategorydescription(e.target.value);
                   }
                 }}
                 required
@@ -501,7 +501,7 @@ Simulation
           </div>
    
 
-      {Expenses.length > 0 ? (
+      {Expense.length > 0 ? (
   
       
         <Table >
@@ -515,16 +515,16 @@ Simulation
             </TableRow>
           </TableHead>
           <TableBody>
-            {Expenses.map((Expense, index) => (
+            {Expense.map((Expense, index) => (
               <TableRow key={index} >
-                <MobileTableCell >{Expense.ExpenseName}</MobileTableCell>
+                <MobileTableCell >{Expense.expenseName}</MobileTableCell>
                 <MobileTableCell>{`${Expense.amount} ${Expense.currency}`}</MobileTableCell>
                 <MobileTableCell>
                 <IconButton onClick={() => handleViewDetails(Expense)}>
-                  <DescriptionIcon />
+                  <categorydescriptionIcon />
                 </IconButton>
               </MobileTableCell>
-                {/* <MobileTableCell>{Expense.description}</MobileTableCell>
+                {/* <MobileTableCell>{Expense.categorydescription}</MobileTableCell>
                 <MobileTableCell>{Expense.category}</MobileTableCell>
                 <MobileTableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
@@ -573,7 +573,7 @@ Simulation
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
                 label="Expense Name"
-                value={ExpenseName}
+                value={expenseName}
                 onChange={(e) => setExpenseName(e.target.value)}
                 required
                 sx={{ marginBottom: "15px", width: "100%", marginTop: "1em" }}
@@ -613,13 +613,13 @@ Simulation
               </div>
              
               <TextField
-                label="Description"
-                value={editingIndex !== null ? editDescription : description}
+                label="categorydescription"
+                value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
-                    setEditDescription(e.target.value);
+                    setEditcategorydescription(e.target.value);
                   } else {
-                    setDescription(e.target.value);
+                    setcategorydescription(e.target.value);
                   }
                 }}
                 required
@@ -672,17 +672,17 @@ Simulation
         <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Description</TableCell>
+                <TableCell>categorydescription</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell>{detailsDescription}</TableCell>
+                <TableCell>{detailscategorydescription}</TableCell>
                 <TableCell>{detailsCategory}</TableCell>
                 <TableCell>
-                  <IconButton onClick={handleEditDescription}>
+                  <IconButton onClick={handleEditcategorydescription}>
                     <EditIcon />
                   </IconButton>
                   <IconButton onClick={handleDeleteExpense}>
