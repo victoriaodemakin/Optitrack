@@ -81,6 +81,7 @@ const Sidebar = () => {
     setSelectedMenuItem(menuItem);
   };
   const navigate = useNavigate();
+ 
   const BudgetClick = () => {
     navigate("/Budgeting");
   };

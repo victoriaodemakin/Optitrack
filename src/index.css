@@ -1,3 +1,6 @@
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *,
 *::after,
 *::before {
@@ -204,13 +207,13 @@ span {
   text-align: center;
   color: #002a80;
 }
-.DesktopSignupScreen {
+.DesktopScreenSignIn {
   display: grid;
   grid-template-columns: 1.5fr 4fr;
   height: 100vh;
   overflow-y: hidden;
 }
-.DesktopSignupForm h1 {
+.DesktopScreenSignIn h1 {
   font-family: "Urbanist";
   font-style: normal;
   font-weight: 600;
@@ -221,7 +224,7 @@ span {
   bottom: 50px;
 }
 
-.DesktopSignupForm h2 {
+.DesktopScreenSignIn h2 {
   font-family: "Urbanist";
   font-style: normal;
   font-weight: 600;
@@ -232,7 +235,7 @@ span {
   bottom: 50px;
 }
 
-.DesktopSignupForm p {
+.DesktopScreenSignIn p {
   font-family: "Urbanist";
   font-style: normal;
   font-weight: 500;
@@ -242,7 +245,7 @@ span {
   color: #002a80;
 }
 
-.SignupContainer {
+.SignInContainer {
   background: #002a80;
 }
 .tableC{

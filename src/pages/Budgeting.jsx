@@ -38,7 +38,7 @@ const ContainedButton = styled(Button)`
   font-size: 1em;
   color: #ffffff;
   font-family: "Urbanist";
-  height:"200px"
+  height:"180px"
   box-shadow: none;
   &:hover {
     background-color: transparent;
@@ -298,14 +298,15 @@ const Budgeting = () => {
           <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />}>
         Add New Budget
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"2em"}}>
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"em"}}>
         Fetch Budget
       </AltButton>
-          </div>
-
       <OutlineButton variant="contained" onClick={handleAddBudget}>
 Simulation      
 </OutlineButton>
+          </div>
+
+  
           </div>
    
 

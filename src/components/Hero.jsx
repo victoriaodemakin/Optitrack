@@ -62,7 +62,7 @@ function Header() {
     navigate("/Login");
   };
   const SignClick = () => {
-    navigate("/Signup");
+    navigate("/SignIn");
   };
 
   return (

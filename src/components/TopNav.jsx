@@ -42,8 +42,9 @@ const HeaderTypography = styled(Typography)`
   color: #ffffff;
   font-family: "Urbanist";
   font-weight: 800;
-  font-size: 1.3em;
+  font-size: 1.5em;
   line-height: 4px;
+  margin-left: 12em
 `;
 const StyledMenuItem = styled(MenuItem)`
   color: #002a80;
@@ -64,6 +65,9 @@ const TopNav = (props) => {
 
   const handleMenuOpen = (e) => {
     setAnchorEl(e.currentTarget);
+  };
+  const HomeClick = () => {
+    navigate("/");
   };
 
   const handleMenuClose = () => {
@@ -109,7 +113,7 @@ const TopNav = (props) => {
                 <StyledMenuItem onClick={handleMenuClose}>
                   Settings
                 </StyledMenuItem>
-                <StyledMenuItem onClick={handleMenuClose}>
+                <StyledMenuItem onClick={HomeClick}>
                   Logout
                 </StyledMenuItem>
               </Menu>
