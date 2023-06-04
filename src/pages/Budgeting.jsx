@@ -298,7 +298,7 @@ const Budgeting = () => {
           <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />}>
         Add New Budget
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"em"}}>
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"2em"}}>
         Fetch Budget
       </AltButton>
       <OutlineButton variant="contained" onClick={handleAddBudget}>

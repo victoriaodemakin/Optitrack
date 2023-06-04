@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery"
 import TopNav from "../components/TopNav";
-// import { Card } from '@mui/material';
 import Sidebar from "../components/Sidebar";
 import MobileNav from "../components/MobileNav";
 import { styled } from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
-import NorevenueImg from '../assets/Nobugdet.svg'
 import MobilerevenueImg from '../assets/cost 1.svg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
-import descriptionIcon from '@mui/icons-material/Description';
+import {  Card, Typography } from "@mui/material";
 
 
 import {
@@ -86,7 +84,7 @@ const AltButton = styled(Button)`
   font-weight: 700;
   font-size: 1em;
   color: #003BB3;
-  width: 180px;
+  width: 200px;
   border: 2px solid #0dde65;
   box-shadow: none;
   font-family: "Urbanist";
@@ -168,6 +166,23 @@ th {
   }
  
 `;
+const CardContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  marginTop: theme.spacing(2),
+}));
+
+const WalletCard = styled(Card)(({ theme }) => ({
+  width: "317px",
+  height: "152px",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  padding: theme.spacing(2),
+  margin: theme.spacing(0, 2, 0, 0),
+}));
+
+
+  
+
 
 
 
@@ -296,24 +311,39 @@ const Revenue = () => {
     <div className='revenueScreen'>
       {isDesktop ? (
       <div className="DesktopScreen" style={{position:"relative"}}>
-        <TopNav Title="revenue" />
+        <TopNav Title="Revenue" />
         <Sidebar />
-        <div className="Desktoprevenue" style={{ position: "absolute", left: "330px", top: "80px", zIndex:"999" }}>
+        <div className="Desktoprevenue" style={{ position: "absolute", left: "310px", top: "80px", zIndex:"999" }}>
         <div>
-          
-          <div className="BtnContainer" style={{marginBottom:"2em"}}>
-          <div className="Btns">
+          <CardContainer style={{marginLeft:"2em"}}>
+          <WalletCard>
+          <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
+          <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+         <div className='BoxColor' style={{  width: "24px",
+  height: "24px",
+  backgroundColor: "#4ED273",
+  alignSelf: "flex-end",}}>
+
+  </div>
+          </div>
+       
+  <div className="colorsection" style={{ width: "380px",
+  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:"1.5em"}}>
+
+  </div>
+        </WalletCard>
+          </CardContainer>
+          <div className="BtnContainer" style={{marginBottom:"2em", padding:"1em 2em"}}>
+          <div className="Btns" style={{display:"flex", justifyContent:"space-between"}}>
           <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />}>
         Add New Revenue
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"2em"}}>
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable} style={{marginLeft:"35em"}} >
         Fetch Revenue
       </AltButton>
           </div>
 
-      <OutlineButton variant="contained" onClick={handleAddrevenue}>
-Simulation      
-</OutlineButton>
           </div>
    
 
@@ -356,10 +386,10 @@ Simulation
         
       ) : (
 <div className="Norevenue">
-<img src={NorevenueImg} alt="desktop color logo" style={{width:"60%", margin:"2em 8em", }}/>
+
 <p style={{color: "#002a80",
   fontFamily: "Urbanist",fontWeight: "500",
-  fontSize:"1em", margin:"-5em 24em 1em 24em"
+  fontSize:"1em", margin:"5em 24em 1em 24em"
 }}>No revenue Available</p>
 </div>     
 
@@ -484,17 +514,35 @@ Simulation
         </div>
     ) : (
       <div className="MobileScreen" style={{width:"100%"}}>
-        <MobileNav title="revenue" />
+        <MobileNav title="Revenue" />
        
         
         <div className="Mobilerevenue" style={{ position: "absolute",top: "80px", zIndex:"999", padding:"1em", width:"100%"}}>
         <div>
-          
+        <CardContainer style={{marginBottom:"2em",width:"100%",}}>
+          <WalletCard sx={{marginBottom:"1em",}}>
+          <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
+          <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+         <div className='BoxColor' style={{  width: "24px",
+  height: "24px",
+  backgroundColor: "#4ED273",
+  alignSelf: "flex-end",}}>
+
+  </div>
+          </div>
+       
+  <div className="colorsection" style={{ width: "380px",
+  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:"1.5em"}}>
+
+  </div>
+        </WalletCard>
+          </CardContainer>
           <div className="BtnContainer" style={{ display:"flex", justifyContent:"space-between",width:"100%"}}>
-          <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />} style={{width:"165px", marginBottom:"2em"}}>
+          <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />} style={{width:"175px", marginBottom:"2em"}}>
         add revenue
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"165px", marginBottom:"2em",marginLeft:".3em"}}>
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"170px", marginBottom:"2em",marginLeft:".3em"}}>
         get revenue
       </AltButton>
       
