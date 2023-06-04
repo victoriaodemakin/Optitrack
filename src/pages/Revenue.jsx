@@ -253,8 +253,8 @@ const Revenue = () => {
   };
 
   const handleEdit = (index) => {
+
     setEditingIndex(index);
-    const revenue = revenue[index];
     setEditAmount(revenue.amount);
     setEditcategorydescription(revenue.categorydescription);
     setEditCategory(revenue.category);

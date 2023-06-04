@@ -208,7 +208,14 @@ const Expense = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  const handleEdit = (index) => {
+    setEditingIndex(index);
+    setEditAmount(expense.amount);
+    setEditcategorydescription(expense.categorydescription);
+    setEditCategory(expense.category);
+    setCurrency(expense.currency)
+    openModal();
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -248,15 +255,7 @@ const Expense = () => {
     setExpense(updatedExpense);
   };
 
-  const handleEdit = (index) => {
-    setEditingIndex(index);
-    const Expense = Expense[index];
-    setEditAmount(Expense.amount);
-    setEditcategorydescription(Expense.categorydescription);
-    setEditCategory(Expense.category);
-    setCurrency(Expense.currency)
-    openModal();
-  };
+
   const openDetailsModal = () => {
     setShowDetailsModal(true);
   };
