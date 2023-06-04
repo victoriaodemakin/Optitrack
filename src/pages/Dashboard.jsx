@@ -1,9 +1,9 @@
-import React, { useState,useEffect  } from 'react';
+import React, { useState,useEffect  } from 'react'; //useeffect here
 import TopNav from "../components/TopNav";
 import Sidebar from "../components/Sidebar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MobileNav from "../components/MobileNav";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card,  Typography } from "@mui/material";
 import ChartBar from '../components/ChartBar';
 import axios from "axios";
 import ChartPie from '../components/ChartPie';
@@ -23,12 +23,7 @@ const WalletCard = styled(Card)(({ theme }) => ({
   margin: theme.spacing(0, 2, 0, 0),
 }));
 
-const FigureBox = styled(Box)`
-width: "24px";
-  height: "24px";
-  backgroundColor: "red";
-  alignSelf: "flex-end";
-`
+
   
 const HeaderTypography = styled(Typography)`
   color: #002a80;
@@ -45,15 +40,15 @@ const Dashboard = () => {
   const [expense, setExpense] = useState(0);
   const [loss, setLoss] = useState(0);
 
-  // useEffect(() => {
-  //   // Fetch the wallet figures from the database
-  //   axios.get("/api/wallet").then((response) => {
-  //     const { revenue, expense, loss } = response.data;
-  //     setRevenue(revenue);
-  //     setExpense(expense);
-  //     setLoss(loss);
-  //   });
-  // }, []);
+  useEffect(() => {
+    // Fetch the wallet figures from the database
+    axios.get("/api/wallet").then((response) => {
+      const { revenue, expense, loss } = response.data;
+      setRevenue(revenue);
+      setExpense(expense);
+      setLoss(loss);
+    });
+  }, []);
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
