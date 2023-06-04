@@ -89,6 +89,9 @@ const Sidebar = () => {
   const ExpenseClick = () => {
     navigate("/Expense");
   };
+  const RevenueClick = () => {
+    navigate("/Revenue");
+  };
   const SimulationClick = () => {
     navigate("/Simulation");
   };
@@ -138,7 +141,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <StyledRevenueIcon />
                 </ListItemIcon>
-                <ListTypography variant="h6">Capture Revenue</ListTypography>
+                <ListTypography variant="h6" onClick={RevenueClick}>Capture Revenue</ListTypography>
               </StyledListItem>
 
               <StyledListItem
