@@ -186,7 +186,7 @@ const WalletCard = styled(Card)(({ theme }) => ({
 const Expense = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [Expense, setExpense] = useState([]);
+  const [expense, setExpense] = useState([]);
   const [amount, setAmount] = useState('');
   const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
@@ -220,7 +220,7 @@ const Expense = () => {
       currency,
     };
 
-    setExpense([...Expense, newExpense]);
+    setExpense([...expense, newExpense]);
     setAmount('');
     setcategorydescription('');
     setCategory('');
@@ -315,7 +315,7 @@ const Expense = () => {
         <WalletCard style={{marginBottom:"2em"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Expense</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{Expense}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{Expense.amount}</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
@@ -343,7 +343,7 @@ const Expense = () => {
           </div>
    
 
-      {Expense.length > 0 ? (
+      {expense.length > 0 ? (
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
@@ -356,7 +356,7 @@ const Expense = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Expense.map((Expense, index) => (
+            {expense.map((Expense, index) => (
               <TableRow key={index} >
                 <TableCell >{Expense.expenseName}</TableCell>
                 <TableCell>{`${Expense.amount} ${Expense.currency}`}</TableCell>
@@ -781,5 +781,6 @@ const Expense = () => {
     </div>
   )
 }
+
 
 export default Expense

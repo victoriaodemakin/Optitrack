@@ -189,11 +189,11 @@ const WalletCard = styled(Card)(({ theme }) => ({
 const Revenue = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [revenue, setrevenue] = useState([]);
+  const [revenue, setRevenue] = useState([]);
   const [amount, setAmount] = useState('');
   const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
-  const [revenueName, setrevenueName] = useState('');
+  const [revenueName, setRevenueName] = useState('');
   const [currency, setCurrency] = useState('NGN'); // Default currency is Naira
 
   const [editingIndex, setEditingIndex] = useState(null);
@@ -223,10 +223,11 @@ const Revenue = () => {
       currency,
     };
 
-    setrevenue([...revenue, newrevenue]);
+    setRevenue([...revenue, newrevenue]);
     setAmount('');
     setcategorydescription('');
     setCategory('');
+    setRevenueName('');
     setCurrency('NGN')
     closeModal();
 
@@ -241,14 +242,14 @@ const Revenue = () => {
   };
 
   const handleAddrevenue = () => {
-    setrevenueName('');
+    setRevenueName('');
     openModal();
   };
 
   const handleDelete = (index) => {
     const updatedrevenue = [...revenue];
     updatedrevenue.splice(index, 1);
-    setrevenue(updatedrevenue);
+    setRevenue(updatedrevenue);
   };
 
   const handleEdit = (index) => {
@@ -297,7 +298,7 @@ const Revenue = () => {
       currency,
     };
 
-    setrevenue(updatedrevenue);
+    setRevenue(updatedrevenue);
     setEditingIndex(null);
     setEditAmount('');
     setEditcategorydescription('');
@@ -319,7 +320,7 @@ const Revenue = () => {
           <WalletCard>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue.length}</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",
@@ -351,7 +352,7 @@ const Revenue = () => {
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
-              <TableCell>revenue Name</TableCell>
+              <TableCell>Revenue Name</TableCell>
               <TableCell>Amount</TableCell>
               <TableCell>categorydescription</TableCell>
               <TableCell>Category</TableCell>
@@ -412,9 +413,9 @@ const Revenue = () => {
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
-                label="revenue Name"
+                label="Revenue Name"
                 value={revenueName}
-                onChange={(e) => setrevenueName(e.target.value)}
+                onChange={(e) => setRevenueName(e.target.value)}
                 required
                 sx={{ marginBottom: "10px", width: "569px", marginTop: "1em" }}
                 size="small"
@@ -486,7 +487,7 @@ const Revenue = () => {
                   <MenuItem value="Salary">Salary</MenuItem>
                   <MenuItem value="Selling">Selling</MenuItem>
                   <MenuItem value="General">General</MenuItem>
-                  <MenuItem value="Admin revenues">Admin revenues</MenuItem>
+                  <MenuItem value="Admin revenues">Admin Revenues</MenuItem>
                   <MenuItem value="Miscellenous">Miscellenous</MenuItem>
                   
                 </Select>
@@ -555,7 +556,7 @@ const Revenue = () => {
         <Table >
           <TableHead >
             <TableRow >
-              <MobileTableCell >revenue Name</MobileTableCell>
+              <MobileTableCell >Revenue Name</MobileTableCell>
               <MobileTableCell>Amount</MobileTableCell>
               <MobileTableCell>Details</MobileTableCell>
            
@@ -620,9 +621,9 @@ const Revenue = () => {
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
-                label="revenue Name"
+                label="Revenue Name"
                 value={revenueName}
-                onChange={(e) => setrevenueName(e.target.value)}
+                onChange={(e) => setRevenueName(e.target.value)}
                 required
                 sx={{ marginBottom: "15px", width: "100%", marginTop: "1em" }}
                 size="small"
