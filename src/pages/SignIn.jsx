@@ -88,6 +88,9 @@ const SignIn = () => {
 
   const navigate = useNavigate();
  
+  const LogClick = () => {
+    navigate("/Login");
+  };
 
   // const handleSignUp = async () => {
   //   try {
@@ -192,7 +195,7 @@ const SignIn = () => {
 <div className="DesktopSignInFormText">
 <h2>Create an account</h2>
           <p>Sign up to get an account</p>
-          <p>Already have an account? <span style={{fontWeight:"bold"}}>Log in</span></p>
+          <p>Already have an account? <span style={{fontWeight:"bold", cursor:"pointer"}} onClick={LogClick} >Log in</span></p>
 </div>
 <div className="Container" style={{display: "flex",flexDirection: "column",alignItems:"center",padding: "20px"}}>
 
