@@ -73,6 +73,9 @@ const MobileNav = (props) => {
   const ProfileClick = () => {
     navigate("/Profile");
   };
+  const RevenueClick = () => {
+    navigate("/Revenue");
+  };
   const ExpenseClick = () => {
     navigate('/Expense');
   };
@@ -84,6 +87,9 @@ const MobileNav = (props) => {
   };
   const DashboardClick = () => {
     navigate("/Dashboard");
+  };
+  const HomeClick = () => {
+    navigate("/");
   };
 
 
@@ -140,7 +146,7 @@ const MobileNav = (props) => {
           >
             <StyledMenuItem onClick={ProfileClick}>Profile</StyledMenuItem>
             <StyledMenuItem onClick={handleMenuClose}>Settings</StyledMenuItem>
-            <StyledMenuItem onClick={handleMenuClose}>Logout</StyledMenuItem>
+            <StyledMenuItem onClick={HomeClick}>Logout</StyledMenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
@@ -154,7 +160,7 @@ const MobileNav = (props) => {
           className="MobileDrawerLogo"
           style={{ padding: "1em", margin: "1em auto" }}
         >
-          <HeaderTypography variant="h3">Opitrack</HeaderTypography>
+          <HeaderTypography variant="h3">Optitrack</HeaderTypography>
         </div>
         <List>
           <ListItem button>
@@ -167,7 +173,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <MoneyIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Capture Revenue" />
+            <ListItemText primary="Capture Revenue" sx={{ color: "white" }} onClick={RevenueClick}/>
           </ListItem>
           <ListItem button>
             <ListItemIcon>

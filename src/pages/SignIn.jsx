@@ -88,6 +88,9 @@ const SignIn = () => {
 
   const navigate = useNavigate();
  
+  const LogClick = () => {
+    navigate("/Login");
+  };
 
   // const handleSignUp = async () => {
   //   try {
@@ -127,14 +130,14 @@ const SignIn = () => {
 
   const handleSignup = () => {
     // Check first name
-    const validFirstNames = ["mike", "vickie", "caleb"];
+    const validFirstNames = ["victoria", "caleb", "femi","theresa","micheal","derek"];
     if (!validFirstNames.includes(firstName.toLowerCase())) {
       setError("Input your First Name");
       return;
     }
 
     // Check last name
-    const validLastNames = ["westborn", "finnish", "love"];
+    const validLastNames = ["odemakin", "Aregbesola", "awolowo","oyim","ochai","orodu"];
     if (!validLastNames.includes(lastName.toLowerCase())) {
       setError("Input your First Name");
       return;
@@ -148,7 +151,7 @@ const SignIn = () => {
 
 
     // Check password
-    const validPasswords = ["Adeboy@123", "Add@123", "Opti@123"];
+    const validPasswords = ["Adedayomi@97", "Adeboy@123 ", "Adeboy@123 "];
     if (!validPasswords.includes(password)) {
       setError("password must contain @, 0-9");
       return;
@@ -192,7 +195,7 @@ const SignIn = () => {
 <div className="DesktopSignInFormText">
 <h2>Create an account</h2>
           <p>Sign up to get an account</p>
-          <p>Already have an account? <span style={{fontWeight:"bold"}}>Log in</span></p>
+          <p>Already have an account? <span style={{fontWeight:"bold", cursor:"pointer"}} onClick={LogClick} >Log in</span></p>
 </div>
 <div className="Container" style={{display: "flex",flexDirection: "column",alignItems:"center",padding: "20px"}}>
 
@@ -274,7 +277,7 @@ const SignIn = () => {
 
          <div className="MobileItem">
       <h3>Create an account</h3>
-      <h5>Already have an account? <span> Log in</span></h5>
+      <h5>Already have an account? <span style={{fontWeight:"bold", cursor:"pointer"}} onClick={LogClick}> Log in</span></h5>
           </div>
           <div className="MobileFormSignIn" style={{position:"absolute", top:"150px", paddingRight:"1em"}}>
 
