@@ -200,6 +200,8 @@ const Revenue = () => {
   const [editAmount, setEditAmount] = useState('');
   const [editcategorydescription, setEditcategorydescription] = useState('');
   const [editCategory, setEditCategory] = useState('');
+  const [RevenueCardAmount, setRevenueCardAmount] = useState(0);
+
 
   const [detailscategorydescription, setDetailscategorydescription] = useState('');
   const [detailsCategory, setDetailsCategory] = useState('');
@@ -234,8 +236,13 @@ const Revenue = () => {
   };
   const handleSaveTable = () => {
     // Code to save the table to the database
-    console.log('Table saved to the database');
-  };
+    const totalAmount = revenue.reduce((sum, item) => sum + parseFloat(item.amount), 0);
+
+    // Update the amount on the card
+    setRevenueCardAmount(totalAmount);
+
+    // Code to save the table to the database
+    console.log('Table saved to the database')   };
   const handleFetchTable = () => {
     // Code to fetch the table from the database
     console.log('Table fetched from the database');
@@ -320,7 +327,7 @@ const Revenue = () => {
           <WalletCard>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue.length}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{RevenueCardAmount}</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",

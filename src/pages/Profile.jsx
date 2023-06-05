@@ -99,6 +99,11 @@ const Profile = () => {
 
   const handleSaveChanges = () => {
     setIsEditing(false);
+  
+  
+    // Send a POST request to the API endpoint
+
+  
   };
 
   
