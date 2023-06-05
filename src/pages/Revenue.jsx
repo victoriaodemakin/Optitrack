@@ -361,7 +361,7 @@ const Revenue = () => {
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
               <TableCell>Revenue Name</TableCell>
               <TableCell>Amount</TableCell>
-              <TableCell>categorydescription</TableCell>
+              <TableCell>Category Description</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Delete/Edit</TableCell>
 
@@ -728,7 +728,7 @@ const Revenue = () => {
         <Table>
             <TableHead>
               <TableRow>
-                <TableCell>categorydescription</TableCell>
+                <TableCell>Category Description</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell>Actions</TableCell>
               </TableRow>

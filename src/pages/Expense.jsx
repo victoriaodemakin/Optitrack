@@ -367,7 +367,7 @@ const Expense = () => {
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
               <TableCell>Expense Name</TableCell>
               <TableCell>Amount</TableCell>
-              <TableCell>categorydescription</TableCell>
+              <TableCell>Category Description</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Delete/Edit</TableCell>
 
@@ -734,7 +734,7 @@ const Expense = () => {
         <Table>
             <TableHead>
               <TableRow>
-                <TableCell>categorydescription</TableCell>
+                <TableCell>Category Description</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell>Actions</TableCell>
               </TableRow>

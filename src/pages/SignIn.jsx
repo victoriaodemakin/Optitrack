@@ -277,7 +277,7 @@ const SignIn = () => {
 
          <div className="MobileItem">
       <h3>Create an account</h3>
-      <h5>Already have an account? <span> Log in</span></h5>
+      <h5>Already have an account? <span style={{fontWeight:"bold", cursor:"pointer"}} onClick={LogClick}> Log in</span></h5>
           </div>
           <div className="MobileFormSignIn" style={{position:"absolute", top:"150px", paddingRight:"1em"}}>
 
