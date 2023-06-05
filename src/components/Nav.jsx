@@ -16,26 +16,7 @@ const Tooldiv = styled(Toolbar)`
   flex-direction: "row";
   width:"20%"
 `;
-// const ContainedButton = styled(Button)`
-//   background: #002a80;
-//   border-radius: 4px;
-//   font-weight: 500;
-//   font-size: 1em;
-//   color: white;
-//   width: 150px;
-//   margin-right: 2em;
-// `;
-// const OutlineButton = styled(Button)`
-//   background: #0dde6500;
-//   border-radius: 4px;
-//   font-style: normal;
-//   font-weight: 500;
-//   font-size: 1em;
-//   color: #002a80;
-//   width: 150px;
-//   border: 2px solid #002a80;
-//   margin-left: 3em;
-// `;
+
 const HeaderTypography = styled(Typography)`
   color: #002a80;
   font-family: "Urbanist";

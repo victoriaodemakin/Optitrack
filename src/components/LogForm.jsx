@@ -1,10 +1,14 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState } from "react";
+import {  useEffect,useState } from "react";
 import { Typography, Button,   TextField as MuiTextField,InputAdornment ,IconButton
 } from "@mui/material";
 import MobileLogo from "./MobileLogo";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+
 import Ellipse70 from "../assets/FooterEllipse.svg";
 import DesktopLogo from "../assets/DesktopColorLogo.svg"
 import Visibility from '@mui/icons-material/VisibilityOutlined';
@@ -17,9 +21,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
-  border: 2px solid #002a80;
+  border: 2px solid #003BB3;
   margin-left: 1em;
   box-shadow: none;
 `;
@@ -37,7 +41,7 @@ const ContainedButton = styled(Button)`
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
   &:hover {
     background-color: transparent;
@@ -97,6 +101,25 @@ const LogForm = () => {
 
   const [passwordError, setPasswordError] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const queryEmail = searchParams.get("email");
+    const queryPassword = searchParams.get("password");
+
+    // Set email and password from query parameters
+    if (queryEmail) {
+      setEmail(queryEmail);
+    }
+    if (queryPassword) {
+      setPassword(queryPassword);
+    }
+  }, [location.search]);
+
+
+
+
 
  
 
@@ -132,6 +155,8 @@ const LogForm = () => {
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+  const navigate = useNavigate();
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -140,10 +165,7 @@ const LogForm = () => {
     const isPasswordValid = validatePassword();
 
     if (isEmailValid && isPasswordValid) {
- // Login logic here
- console.log('Email:', email);
- console.log('Password:', password);
-
+      navigate("/Dashboard");
 
    // Clear the input fields
    setEmail("");

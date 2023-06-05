@@ -14,7 +14,7 @@ import BckImage from "../assets/GirlBng.png";
 import { useNavigate } from "react-router-dom";
 
 const ContainedButton = styled(Button)`
-  background: #002a80;
+  background: #003BB3;
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
@@ -27,9 +27,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #002a80;
+  color: #003BB3;
   width: 150px;
-  border: 2px solid #002a80;
+  border: 2px solid #003BB3;
   margin-left: 1em;
 `;
 
@@ -62,7 +62,7 @@ function Header() {
     navigate("/Login");
   };
   const SignClick = () => {
-    navigate("/Signup");
+    navigate("/SignIn");
   };
 
   return (

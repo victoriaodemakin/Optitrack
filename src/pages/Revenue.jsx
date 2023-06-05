@@ -5,12 +5,11 @@ import Sidebar from "../components/Sidebar";
 import MobileNav from "../components/MobileNav";
 import { styled } from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
-import NoBudgetImg from '../assets/Nobugdet.svg'
-import MobileBudgetImg from '../assets/cost 1.svg'
+import MobilerevenueImg from '../assets/cost 1.svg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
-import DescriptionIcon from '@mui/icons-material/Description';
+import {  Card, Typography } from "@mui/material";
 
 
 import {
@@ -38,7 +37,7 @@ const ContainedButton = styled(Button)`
   font-size: 1em;
   color: #ffffff;
   font-family: "Urbanist";
-  height:"180px"
+  height:"200px"
   box-shadow: none;
   &:hover {
     background-color: transparent;
@@ -85,7 +84,7 @@ const AltButton = styled(Button)`
   font-weight: 700;
   font-size: 1em;
   color: #003BB3;
-  width: 180px;
+  width: 200px;
   border: 2px solid #0dde65;
   box-shadow: none;
   font-family: "Urbanist";
@@ -104,6 +103,13 @@ const TextField = styled(MuiTextField)`
   .MuiOutlinedInput-root {
     border-radius: 8px;
     color: #002a80;
+import Table from "../components/Table";
+import WalletCard from "../components/WalletCard";
+
+// import Transaction from "../components/Transaction";
+// import CardWallet from "../components/CardWallet";
+
+// import { styled } from "@mui/material/styles";
 
     &:hover fieldset {
       border-color: #002a80;
@@ -160,25 +166,42 @@ th {
   }
  
 `;
+const CardContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  marginTop: theme.spacing(2),
+}));
+
+const WalletCard = styled(Card)(({ theme }) => ({
+  width: "317px",
+  height: "152px",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  padding: theme.spacing(2),
+  margin: theme.spacing(0, 2, 0, 0),
+}));
+
+
+  
 
 
 
-const Budgeting = () => {
+
+const Revenue = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [budgets, setBudgets] = useState([]);
+  const [revenue, setRevenue] = useState([]);
   const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
+  const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
-  const [budgetName, setBudgetName] = useState('');
+  const [revenueName, setRevenueName] = useState('');
   const [currency, setCurrency] = useState('NGN'); // Default currency is Naira
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editAmount, setEditAmount] = useState('');
-  const [editDescription, setEditDescription] = useState('');
+  const [editcategorydescription, setEditcategorydescription] = useState('');
   const [editCategory, setEditCategory] = useState('');
 
-  const [detailsDescription, setDetailsDescription] = useState('');
+  const [detailscategorydescription, setDetailscategorydescription] = useState('');
   const [detailsCategory, setDetailsCategory] = useState('');
 
   const openModal = () => {
@@ -192,18 +215,19 @@ const Budgeting = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newBudget = {
+    const newrevenue = {
       amount,
-      description,
+      categorydescription,
       category,
-      budgetName,
+      revenueName,
       currency,
     };
 
-    setBudgets([...budgets, newBudget]);
+    setRevenue([...revenue, newrevenue]);
     setAmount('');
-    setDescription('');
+    setcategorydescription('');
     setCategory('');
+    setRevenueName('');
     setCurrency('NGN')
     closeModal();
 
@@ -217,24 +241,24 @@ const Budgeting = () => {
     console.log('Table fetched from the database');
   };
 
-  const handleAddBudget = () => {
-    setBudgetName('');
+  const handleAddrevenue = () => {
+    setRevenueName('');
     openModal();
   };
 
   const handleDelete = (index) => {
-    const updatedBudgets = [...budgets];
-    updatedBudgets.splice(index, 1);
-    setBudgets(updatedBudgets);
+    const updatedrevenue = [...revenue];
+    updatedrevenue.splice(index, 1);
+    setRevenue(updatedrevenue);
   };
 
   const handleEdit = (index) => {
+
     setEditingIndex(index);
-    const budget = budgets[index];
-    setEditAmount(budget.amount);
-    setEditDescription(budget.description);
-    setEditCategory(budget.category);
-    setCurrency(budget.currency)
+    setEditAmount(revenue.amount);
+    setEditcategorydescription(revenue.categorydescription);
+    setEditCategory(revenue.category);
+    setCurrency(revenue.currency)
     openModal();
   };
   const openDetailsModal = () => {
@@ -245,18 +269,18 @@ const Budgeting = () => {
     setShowDetailsModal(false);
   };
 
-  const handleViewDetails = (budget) => {
-    setDetailsDescription(budget.description);
-    setDetailsCategory(budget.category);
+  const handleViewDetails = (revenue) => {
+    setDetailscategorydescription(revenue.categorydescription);
+    setDetailsCategory(revenue.category);
     openDetailsModal();
   };
-  const handleEditDescription = () => {
-    setEditDescription(detailsDescription);
+  const handleEditcategorydescription = () => {
+    setEditcategorydescription(detailscategorydescription);
     setEditCategory(detailsCategory);
     openModal();
     closeDetailsModal();
   };
-  const handleDeleteBudget = () => {
+  const handleDeleterevenue = () => {
     handleDelete(editingIndex);
     setEditingIndex(null);
     closeDetailsModal();
@@ -265,19 +289,19 @@ const Budgeting = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    const updatedBudgets = [...budgets];
-    updatedBudgets[editingIndex] = {
+    const updatedrevenue = [...revenue];
+    updatedrevenue[editingIndex] = {
       amount: editAmount,
-      description: editDescription,
+      categorydescription: editcategorydescription,
       category: editCategory,
-      budgetName,
+      revenueName,
       currency,
     };
 
-    setBudgets(updatedBudgets);
+    setRevenue(updatedrevenue);
     setEditingIndex(null);
     setEditAmount('');
-    setEditDescription('');
+    setEditcategorydescription('');
     setEditCategory('');
     closeModal();
   };
@@ -285,50 +309,64 @@ const Budgeting = () => {
  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
-    <div className='BudgetScreen'>
+    <div className='revenueScreen'>
       {isDesktop ? (
       <div className="DesktopScreen" style={{position:"relative"}}>
-        <TopNav Title="Budgeting" />
+        <TopNav Title="Revenue" />
         <Sidebar />
-        <div className="DesktopBudget" style={{ position: "absolute", left: "330px", top: "80px", zIndex:"999" }}>
+        <div className="Desktoprevenue" style={{ position: "absolute", left: "310px", top: "80px", zIndex:"999" }}>
         <div>
-          
-          <div className="BtnContainer" style={{marginBottom:"2em"}}>
-          <div className="Btns">
-          <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />}>
-        Add New Budget
+          <CardContainer style={{marginLeft:"2em"}}>
+          <WalletCard>
+          <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
+          <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue.length}</Typography>
+         <div className='BoxColor' style={{  width: "24px",
+  height: "24px",
+  backgroundColor: "#4ED273",
+  alignSelf: "flex-end",}}>
+
+  </div>
+          </div>
+       
+  <div className="colorsection" style={{ width: "380px",
+  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:"1.5em"}}>
+
+  </div>
+        </WalletCard>
+          </CardContainer>
+          <div className="BtnContainer" style={{marginBottom:"2em", padding:"1em 2em"}}>
+          <div className="Btns" style={{display:"flex", justifyContent:"space-between"}}>
+          <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />}>
+        Add New Revenue
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{marginRight:"28em", marginLeft:"2em"}}>
-        Fetch Budget
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable} style={{marginLeft:"35em"}} >
+        Fetch Revenue
       </AltButton>
-      <OutlineButton variant="contained" onClick={handleAddBudget}>
-Simulation      
-</OutlineButton>
           </div>
 
-  
           </div>
    
 
-      {budgets.length > 0 ? (
+      {revenue.length > 0 ? (
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
-              <TableCell>Budget Name</TableCell>
+              <TableCell>Revenue Name</TableCell>
               <TableCell>Amount</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>categorydescription</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Delete/Edit</TableCell>
 
             </TableRow>
           </TableHead>
           <TableBody>
-            {budgets.map((budget, index) => (
+            {revenue.map((revenue, index) => (
               <TableRow key={index} >
-                <TableCell >{budget.budgetName}</TableCell>
-                <TableCell>{`${budget.amount} ${budget.currency}`}</TableCell>
-                <TableCell>{budget.description}</TableCell>
-                <TableCell>{budget.category}</TableCell>
+                <TableCell >{revenue.revenueName}</TableCell>
+                <TableCell>{`${revenue.amount} ${revenue.currency}`}</TableCell>
+                <TableCell>{revenue.categorydescription}</TableCell>
+                <TableCell>{revenue.category}</TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
                     <DeleteIcon />
@@ -348,12 +386,12 @@ Simulation
        
         
       ) : (
-<div className="NoBudget">
-<img src={NoBudgetImg} alt="desktop color logo" style={{width:"60%", margin:"2em 8em", }}/>
+<div className="Norevenue">
+
 <p style={{color: "#002a80",
   fontFamily: "Urbanist",fontWeight: "500",
-  fontSize:"1em", margin:"-5em 24em 1em 24em"
-}}>No Budget Available</p>
+  fontSize:"1em", margin:"5em 24em 1em 24em"
+}}>No revenue Available</p>
 </div>     
 
 )}
@@ -369,15 +407,15 @@ Simulation
               }}>
             <div className="formConatiner">
             <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-          <h2>Create a Budget</h2>
-          <p>Create your wallet, Create your budget, We do the Tracking </p>
+          <h2>Add revenue</h2>
+          <p> Track your revenues and manage your money effectively.</p>
           
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
-                label="Budget Name"
-                value={budgetName}
-                onChange={(e) => setBudgetName(e.target.value)}
+                label="Revenue Name"
+                value={revenueName}
+                onChange={(e) => setRevenueName(e.target.value)}
                 required
                 sx={{ marginBottom: "10px", width: "569px", marginTop: "1em" }}
                 size="small"
@@ -416,13 +454,13 @@ Simulation
               </div>
              
               <TextField
-                label="Description"
-                value={editingIndex !== null ? editDescription : description}
+                label="categorydescription"
+                value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
-                    setEditDescription(e.target.value);
+                    setEditcategorydescription(e.target.value);
                   } else {
-                    setDescription(e.target.value);
+                    setcategorydescription(e.target.value);
                   }
                 }}
                 required
@@ -449,7 +487,7 @@ Simulation
                   <MenuItem value="Salary">Salary</MenuItem>
                   <MenuItem value="Selling">Selling</MenuItem>
                   <MenuItem value="General">General</MenuItem>
-                  <MenuItem value="Admin Expenses">Admin Expenses</MenuItem>
+                  <MenuItem value="Admin revenues">Admin Revenues</MenuItem>
                   <MenuItem value="Miscellenous">Miscellenous</MenuItem>
                   
                 </Select>
@@ -477,30 +515,48 @@ Simulation
         </div>
     ) : (
       <div className="MobileScreen" style={{width:"100%"}}>
-        <MobileNav title="Budgeting" />
+        <MobileNav title="Revenue" />
        
         
-        <div className="MobileBudget" style={{ position: "absolute",top: "80px", zIndex:"999", padding:"1em", width:"100%"}}>
+        <div className="Mobilerevenue" style={{ position: "absolute",top: "80px", zIndex:"999", padding:"1em", width:"100%"}}>
         <div>
-          
+        <CardContainer style={{marginBottom:"2em",width:"100%",}}>
+          <WalletCard sx={{marginBottom:"1em",}}>
+          <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
+          <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+         <div className='BoxColor' style={{  width: "24px",
+  height: "24px",
+  backgroundColor: "#4ED273",
+  alignSelf: "flex-end",}}>
+
+  </div>
+          </div>
+       
+  <div className="colorsection" style={{ width: "380px",
+  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:"1.5em"}}>
+
+  </div>
+        </WalletCard>
+          </CardContainer>
           <div className="BtnContainer" style={{ display:"flex", justifyContent:"space-between",width:"100%"}}>
-          <ContainedButton variant="contained" onClick={handleAddBudget}startIcon={<AddIcon />} style={{width:"165px", marginBottom:"2em"}}>
-        add Budget
+          <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />} style={{width:"175px", marginBottom:"2em"}}>
+        add revenue
       </ContainedButton>
-          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"165px", marginBottom:"2em",marginLeft:".3em"}}>
-        get Budget
+          <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"170px", marginBottom:"2em",marginLeft:".3em"}}>
+        get revenue
       </AltButton>
       
           </div>
    
 
-      {budgets.length > 0 ? (
+      {revenue.length > 0 ? (
   
       
         <Table >
           <TableHead >
             <TableRow >
-              <MobileTableCell >Budget Name</MobileTableCell>
+              <MobileTableCell >Revenue Name</MobileTableCell>
               <MobileTableCell>Amount</MobileTableCell>
               <MobileTableCell>Details</MobileTableCell>
            
@@ -508,17 +564,17 @@ Simulation
             </TableRow>
           </TableHead>
           <TableBody>
-            {budgets.map((budget, index) => (
+            {revenue.map((revenue, index) => (
               <TableRow key={index} >
-                <MobileTableCell >{budget.budgetName}</MobileTableCell>
-                <MobileTableCell>{`${budget.amount} ${budget.currency}`}</MobileTableCell>
+                <MobileTableCell >{revenue.revenueName}</MobileTableCell>
+                <MobileTableCell>{`${revenue.amount} ${revenue.currency}`}</MobileTableCell>
                 <MobileTableCell>
-                <IconButton onClick={() => handleViewDetails(budget)}>
-                  <DescriptionIcon />
+                <IconButton onClick={() => handleViewDetails(revenue)}>
+                  <categorydescriptionIcon />
                 </IconButton>
               </MobileTableCell>
-                {/* <MobileTableCell>{budget.description}</MobileTableCell>
-                <MobileTableCell>{budget.category}</MobileTableCell>
+                {/* <MobileTableCell>{revenue.categorydescription}</MobileTableCell>
+                <MobileTableCell>{revenue.category}</MobileTableCell>
                 <MobileTableCell>
                   <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
                     <DeleteIcon />
@@ -538,12 +594,12 @@ Simulation
        
         
       ) : (
-<div className="NoBudget" style={{position:"relative", display:"flex",flexDirection:"column", justifyContent:"center", alignContent:"center"}}>
-<img src={MobileBudgetImg} alt="desktop color logo" style={{width:"80%",margin:"6em auto 2em 5em "}}/>
+<div className="Norevenue" style={{position:"relative", display:"flex",flexDirection:"column", justifyContent:"center", alignContent:"center"}}>
+<img src={MobilerevenueImg} alt="desktop color logo" style={{width:"80%",margin:"6em auto 2em 5em "}}/>
 <p style={{color: "#002a80",
   fontFamily: "Urbanist",fontWeight: "500",margin:"0 auto"
   // fontSize:"1em",position:"absolute", top:"300px", left:"6em",marginBottom:"9em"
-}}>No Budget Available</p>
+}}>No revenue Available</p>
 </div>     
 
 )}
@@ -559,15 +615,15 @@ Simulation
               }}>
             <div className="formConatiner">
             <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-          <h2>Create a Budget</h2>
-          <p>Create your wallet, Create your budget, We do the Tracking </p>
+          <h2>Create a revenue</h2>
+          <p>Create your wallet, Create your revenue, We do the Tracking </p>
           
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
-                label="Budget Name"
-                value={budgetName}
-                onChange={(e) => setBudgetName(e.target.value)}
+                label="Revenue Name"
+                value={revenueName}
+                onChange={(e) => setRevenueName(e.target.value)}
                 required
                 sx={{ marginBottom: "15px", width: "100%", marginTop: "1em" }}
                 size="small"
@@ -606,13 +662,13 @@ Simulation
               </div>
              
               <TextField
-                label="Description"
-                value={editingIndex !== null ? editDescription : description}
+                label="categorydescription"
+                value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
-                    setEditDescription(e.target.value);
+                    setEditcategorydescription(e.target.value);
                   } else {
-                    setDescription(e.target.value);
+                    setcategorydescription(e.target.value);
                   }
                 }}
                 required
@@ -639,7 +695,7 @@ Simulation
                   <MenuItem value="Salary">Salary</MenuItem>
                   <MenuItem value="Selling">Selling</MenuItem>
                   <MenuItem value="General">General</MenuItem>
-                  <MenuItem value="Admin Expenses">Admin Expenses</MenuItem>
+                  <MenuItem value="Admin revenues">Admin revenues</MenuItem>
                   <MenuItem value="Miscellenous">Miscellenous</MenuItem>
                   
                 </CurrencySelect>
@@ -665,20 +721,20 @@ Simulation
         <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Description</TableCell>
+                <TableCell>categorydescription</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-                <TableCell>{detailsDescription}</TableCell>
+                <TableCell>{detailscategorydescription}</TableCell>
                 <TableCell>{detailsCategory}</TableCell>
                 <TableCell>
-                  <IconButton onClick={handleEditDescription}>
+                  <IconButton onClick={handleEditcategorydescription}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={handleDeleteBudget}>
+                  <IconButton onClick={handleDeleterevenue}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
@@ -731,4 +787,4 @@ Simulation
   )
 }
 
-export default Budgeting
+export default Revenue

@@ -73,6 +73,20 @@ const MobileNav = (props) => {
   const ProfileClick = () => {
     navigate("/Profile");
   };
+  const ExpenseClick = () => {
+    navigate('/Expense');
+  };
+  const BudgetClick = () => {
+    navigate("/Budgeting");
+  };
+  const SimulationClick = () => {
+    navigate("/Simulation");
+  };
+  const DashboardClick = () => {
+    navigate("/Dashboard");
+  };
+
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (e) => {
@@ -147,7 +161,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <DashboardIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" sx={{ color: "white" }} />
+            <ListItemText primary="Dashboard" sx={{ color: "white" }} onClick={DashboardClick} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -159,7 +173,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <MoneyIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Capture Expense" />
+            <ListItemText primary="Capture Expense" onClick={ExpenseClick} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -171,13 +185,13 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <PieChartIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Budgeting" />
+            <ListItemText primary="Budgeting" onClick={BudgetClick}/>
           </ListItem>
           <ListItem button>
             <ListItemIcon>
               <InsertChartIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Stimulation" />
+            <ListItemText primary="Simulation" onClick={SimulationClick} />
           </ListItem>
         </List>
         <div>
