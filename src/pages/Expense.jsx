@@ -200,6 +200,8 @@ const Expense = () => {
 
   const [detailscategorydescription, setDetailscategorydescription] = useState('');
   const [detailsCategory, setDetailsCategory] = useState('');
+  const [expenseCardAmount, setExpenseCardAmount] = useState(0);
+
 
   const openModal = () => {
     setShowModal(true);
@@ -236,8 +238,13 @@ const Expense = () => {
 
   };
   const handleSaveTable = () => {
+    const totalAmount = expense.reduce((sum, item) => sum + parseFloat(item.amount), 0);
+
+    // Update the amount on the card
+    setExpenseCardAmount(totalAmount);
+
     // Code to save the table to the database
-    console.log('Table saved to the database');
+    console.log('Table saved to the database')    
   };
   const handleFetchTable = () => {
     // Code to fetch the table from the database
@@ -325,7 +332,8 @@ const Expense = () => {
         <WalletCard style={{marginBottom:"2em"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Expense</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{Expense.amount}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>            {expenseCardAmount}
+</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
