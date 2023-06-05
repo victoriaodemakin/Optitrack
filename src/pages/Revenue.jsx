@@ -684,9 +684,9 @@ const Revenue = () => {
                 padding: "2em 1em",
               }}>
             <div className="formConatiner">
-            <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-          <h2>Create a revenue</h2>
-          <p>Create your wallet, Create your revenue, We do the Tracking </p>
+            <div className="DesktopSignupForm" style={{marginBottom:"1em", fontFamily: "inter", color: "#002a80", lineHeight: "2em", textAlign: "center"}}>
+          <h2>Add Revenue</h2>
+          <p>Create your wallet, Add your revenue, We do the Tracking! </p>
           
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
