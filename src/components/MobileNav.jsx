@@ -154,7 +154,7 @@ const MobileNav = (props) => {
           className="MobileDrawerLogo"
           style={{ padding: "1em", margin: "1em auto" }}
         >
-          <HeaderTypography variant="h3">Opitrack</HeaderTypography>
+          <HeaderTypography variant="h3">Optitrack</HeaderTypography>
         </div>
         <List>
           <ListItem button>

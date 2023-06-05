@@ -15,7 +15,7 @@ const HeaderTypography = styled(Typography)`
 const MobileLogo = () => {
   return (
 <div className="MobileHeader" style={{padding: "1em", marginLeft:"-1em"}} >
-            <HeaderTypography variant="h3">Opitrack</HeaderTypography>
+            <HeaderTypography variant="h3">Optitrack</HeaderTypography>
             <img
               src={BlueMobileCircle}
               className="BlueBackgroundCircle"
