@@ -461,7 +461,7 @@ const Revenue = () => {
               </div>
              
               <TextField
-                label="categorydescription"
+                label="Category Description"
                 value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
@@ -669,7 +669,7 @@ const Revenue = () => {
               </div>
              
               <TextField
-                label="categorydescription"
+                label="Category Description"
                 value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
