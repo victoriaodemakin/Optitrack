@@ -302,6 +302,17 @@ const Expense = () => {
     closeModal();
   };
 
+
+  // create a function called addAmounts
+  // Inside the function it should iterating through all the expenses in your storage using the id.
+  //  total+= expense.amount
+  // set state
+
+  // create usestate and initialize, 
+
+// {} so you will use this to display it inside the text or font e.g. h4
+
+
  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
