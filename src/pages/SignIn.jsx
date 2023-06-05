@@ -138,6 +138,7 @@ const SignIn = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
 
+<<<<<<< HEAD
     try {
       const response = await fetch(
         "https://opti-trackapi.azurewebsites.net/NewAuth/register",
@@ -177,6 +178,48 @@ const SignIn = () => {
     console.log(accIds);
     console.log(data)
     console.log(setError)
+=======
+  const handleSignup = () => {
+    // Check first name
+    const validFirstNames = ["victoria", "caleb", "femi","theresa","micheal","derek"];
+    if (!validFirstNames.includes(firstName.toLowerCase())) {
+      setError("Input your First Name");
+      return;
+    }
+
+    // Check last name
+    const validLastNames = ["odemakin", "Aregbesola", "awolowo","oyim","ochai","orodu"];
+    if (!validLastNames.includes(lastName.toLowerCase())) {
+      setError("Input your First Name");
+      return;
+    }
+
+    // Check email
+    if (!email.includes("@")) {
+      setError("email must contain @");
+      return;
+    }
+
+
+    // Check password
+    const validPasswords = ["Adedayomi@97", "Adeboy@123 ", "Adeboy@123 "];
+    if (!validPasswords.includes(password)) {
+      setError("password must contain @, 0-9");
+      return;
+    }
+
+    // Check confirm password
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    // All conditions met, proceed to login page
+    setError("");
+    // Navigate to login page or perform other actions
+
+    navigate(`/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+>>>>>>> 9cbaf23253f9662c11a4816dc16cd0403ca63c24
 
   };
   // const handleSignup = () => {
@@ -359,11 +402,17 @@ const SignIn = () => {
         >
           <MobileGreenLogo />
 
+<<<<<<< HEAD
           <div className="MobileItem">
             <h3>Create an account</h3>
             <h5>
               Already have an account? <span> Log in</span>
             </h5>
+=======
+         <div className="MobileItem">
+      <h3>Create an account</h3>
+      <h5>Already have an account? <span style={{fontWeight:"bold", cursor:"pointer"}} onClick={LogClick}> Log in</span></h5>
+>>>>>>> 9cbaf23253f9662c11a4816dc16cd0403ca63c24
           </div>
           <div
             className="MobileFormSignIn"

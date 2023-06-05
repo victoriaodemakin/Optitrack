@@ -91,6 +91,9 @@ const MobileNav = (props) => {
   const DashboardClick = () => {
     navigate("/Dashboard");
   };
+  const HomeClick = () => {
+    navigate("/");
+  };
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -146,7 +149,7 @@ const MobileNav = (props) => {
           >
             <StyledMenuItem onClick={ProfileClick}>Profile</StyledMenuItem>
             <StyledMenuItem onClick={handleMenuClose}>Settings</StyledMenuItem>
-            <StyledMenuItem onClick={handleMenuClose}>Logout</StyledMenuItem>
+            <StyledMenuItem onClick={HomeClick}>Logout</StyledMenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
