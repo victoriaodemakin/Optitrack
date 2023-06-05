@@ -73,6 +73,9 @@ const MobileNav = (props) => {
   const ProfileClick = () => {
     navigate("/Profile");
   };
+  const RevenueClick = () => {
+    navigate("/Revenue");
+  };
   const ExpenseClick = () => {
     navigate('/Expense');
   };
@@ -167,7 +170,7 @@ const MobileNav = (props) => {
             <ListItemIcon>
               <MoneyIcon style={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary="Capture Revenue" />
+            <ListItemText primary="Capture Revenue" sx={{ color: "white" }} onClick={RevenueClick}/>
           </ListItem>
           <ListItem button>
             <ListItemIcon>
