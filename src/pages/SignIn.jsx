@@ -143,7 +143,7 @@ const SignIn = () => {
       return;
     }
 
-    // Check email
+    // Check email              
     if (!email.includes("@")) {
       setError("email must contain @");
       return;
