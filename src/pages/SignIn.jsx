@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DesktopColorLogo from '../assets/DesktopColorLogo.svg'
 import BlueEllipse from "../assets/BlueCircleIcon.svg"
-import axios from "axios";
 
 
 
@@ -90,84 +89,84 @@ const SignIn = () => {
   const navigate = useNavigate();
  
 
-  const handleSignUp = async () => {
-    try {
-      const response = await axios.post(
-        "https://opti-trackapi.azurewebsites.net/Accounts/register",
-        {
-          title: "string",
-          firstName,
-          lastName,
-          email,
-          password,
-          confirmPassword,
-          acceptTerms: agreeTerms,
-        }
-      );
+  // const handleSignUp = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://opti-trackapi.azurewebsites.net/Accounts/register",
+  //       {
+  //         title: "string",
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         password,
+  //         confirmPassword,
+  //         acceptTerms: agreeTerms,
+  //       }
+  //     );
 
-      // Check the response status code or any other relevant data to determine if the sign-up was successful
-      if (response.status === 200) {
-        // Successful sign-up
-        setError("");
-        // Redirect to the desired page or perform other actions
-        localStorage.setItem("userData", JSON.stringify(response));
+  //     // Check the response status code or any other relevant data to determine if the sign-up was successful
+  //     if (response.status === 200) {
+  //       // Successful sign-up
+  //       setError("");
+  //       // Redirect to the desired page or perform other actions
+  //       localStorage.setItem("userData", JSON.stringify(response));
 
-        navigate("/Login");
-      } else {
-        // Sign-up failed
-        setError("Sign-up failed. Please check your details and try again.");
-      }
-    } catch (error) {
-      // Handle any errors that occur during the API request
-      console.log("Sign-up error:", error);
-      setError("An error occurred during sign-up. Please try again later.");
-    }
-  };
-  
-  
-
-  // const handleSignup = () => {
-  //   // Check first name
-  //   const validFirstNames = ["mike", "vickie", "caleb"];
-  //   if (!validFirstNames.includes(firstName.toLowerCase())) {
-  //     setError("Input your First Name");
-  //     return;
+  //       navigate("/Login");
+  //     } else {
+  //       // Sign-up failed
+  //       setError("Sign-up failed. Please check your details and try again.");
+  //     }
+  //   } catch (error) {
+  //     // Handle any errors that occur during the API request
+  //     console.log("Sign-up error:", error);
+  //     setError("An error occurred during sign-up. Please try again later.");
   //   }
-
-  //   // Check last name
-  //   const validLastNames = ["westborn", "finnish", "love"];
-  //   if (!validLastNames.includes(lastName.toLowerCase())) {
-  //     setError("Input your First Name");
-  //     return;
-  //   }
-
-  //   // Check email
-  //   if (!email.includes("@")) {
-  //     setError("email must contain @");
-  //     return;
-  //   }
-
-
-  //   // Check password
-  //   const validPasswords = ["Adeboy@123", "Add@123", "Opti@123"];
-  //   if (!validPasswords.includes(password)) {
-  //     setError("password must contain @, 0-9");
-  //     return;
-  //   }
-
-  //   // Check confirm password
-  //   if (password !== confirmPassword) {
-  //     setError("Passwords do not match");
-  //     return;
-  //   }
-
-  //   // All conditions met, proceed to login page
-  //   setError("");
-  //   // Navigate to login page or perform other actions
-
-  //   navigate(`/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
-
   // };
+  
+  
+
+  const handleSignup = () => {
+    // Check first name
+    const validFirstNames = ["mike", "vickie", "caleb"];
+    if (!validFirstNames.includes(firstName.toLowerCase())) {
+      setError("Input your First Name");
+      return;
+    }
+
+    // Check last name
+    const validLastNames = ["westborn", "finnish", "love"];
+    if (!validLastNames.includes(lastName.toLowerCase())) {
+      setError("Input your First Name");
+      return;
+    }
+
+    // Check email
+    if (!email.includes("@")) {
+      setError("email must contain @");
+      return;
+    }
+
+
+    // Check password
+    const validPasswords = ["Adeboy@123", "Add@123", "Opti@123"];
+    if (!validPasswords.includes(password)) {
+      setError("password must contain @, 0-9");
+      return;
+    }
+
+    // Check confirm password
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    // All conditions met, proceed to login page
+    setError("");
+    // Navigate to login page or perform other actions
+
+    navigate(`/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+
+  };
    // Set the email and password in the credentials state
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
@@ -261,7 +260,7 @@ const SignIn = () => {
       <OutlineButton
                   variant="outlined"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", marginTop:"-4em", marginRight:"-35em"}}
-                  onClick={handleSignUp} >
+                  onClick={handleSignup} >
                   Sign Up
                 </OutlineButton>
       {error && <p>{error}</p>}
@@ -343,7 +342,7 @@ const SignIn = () => {
       <OutlineButton
                   variant="outlined"
                   sx={{ textTransform: "capitalize", fontWeight: "bold", textAlign:"center", margin:"1em 5em"}}
-                  onClick={handleSignUp} >
+                  onClick={handleSignup} >
                   Sign Up
                 </OutlineButton>
       {error && <p>{error}</p>}

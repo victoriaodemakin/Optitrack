@@ -11,6 +11,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
 import DescriptionIcon from '@mui/icons-material/Description';
+import axios from 'axios';
+
 
 
 import {
@@ -209,8 +211,26 @@ const Budgeting = () => {
 
   };
   const handleSaveTable = () => {
-    // Code to save the table to the database
-    console.log('Table saved to the database');
+    const requests = budgets.map((budget) =>
+    axios.post('https://opti-trackapi.azurewebsites.net/api/Budget/create-budget', {
+      name: budget.budgetName,
+      amount: budget.amount,
+      businessId: '3fa85f64-5717-4562-b3fc-2c963f66afa6', // Replace with your actual business ID
+      categoryDescription: budget.description,
+      category: budget.category
+    })
+  );
+
+  // Send all POST requests simultaneously using Promise.all
+  Promise.all(requests)
+    .then((responses) => {
+      console.log('Table saved to the database');
+      // Handle successful responses if needed
+    })
+    .catch((error) => {
+      console.error('Error saving table:', error);
+      // Handle error if needed
+    });
   };
   const handleFetchTable = () => {
     // Code to fetch the table from the database
@@ -689,45 +709,9 @@ Simulation
       </Modal>
     </div>
         </div>
-       
-
-
-        </div>
-    
-    
-    
-
-    
-    
-    
-    
-    
+        </div>  
     )}
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+      </div>
   )
 }
 
