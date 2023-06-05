@@ -467,7 +467,7 @@ const Expense = () => {
               </div>
              
               <TextField
-                label="categorydescription"
+                label="Category Description"
                 value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
@@ -628,7 +628,7 @@ const Expense = () => {
               }}>
             <div className="formConatiner">
             <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-          <h2>Create a Expense</h2>
+          <h2>Create an Expense</h2>
           <p>Create your wallet, Create your Expense, We do the Tracking </p>
           
     </div>
@@ -675,7 +675,7 @@ const Expense = () => {
               </div>
              
               <TextField
-                label="categorydescription"
+                label="Category Description"
                 value={editingIndex !== null ? editcategorydescription : categorydescription}
                 onChange={(e) => {
                   if (editingIndex !== null) {
