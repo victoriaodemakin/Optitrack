@@ -413,7 +413,7 @@ const Revenue = () => {
                 padding: "2em 7em",
               }}>
             <div className="formConatiner">
-            <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
+            <div className="DesktopSignupForm" style={{marginBottom:"1em", fontFamily: "inter", color: "#002a80", lineHeight: "2em", textAlign:"center"}}>
           <h2>Add revenue</h2>
           <p> Track your revenues and manage your money effectively.</p>
           
@@ -548,10 +548,10 @@ const Revenue = () => {
           </CardContainer>
           <div className="BtnContainer" style={{ display:"flex", justifyContent:"space-between",width:"100%"}}>
           <ContainedButton variant="contained" onClick={handleAddrevenue}startIcon={<AddIcon />} style={{width:"175px", marginBottom:"2em"}}>
-        add revenue
+        Add revenue
       </ContainedButton>
           <AltButton variant="contained" color="primary" startIcon={<FetchIcon  style={{color:"003BB3"}}/>} onClick={handleFetchTable}  style={{width:"170px", marginBottom:"2em",marginLeft:".3em"}}>
-        get revenue
+        Get revenue
       </AltButton>
       
           </div>

@@ -130,14 +130,14 @@ const SignIn = () => {
 
   const handleSignup = () => {
     // Check first name
-    const validFirstNames = ["mike", "vickie", "caleb"];
+    const validFirstNames = ["victoria", "caleb", "femi","theresa","micheal","derek"];
     if (!validFirstNames.includes(firstName.toLowerCase())) {
       setError("Input your First Name");
       return;
     }
 
     // Check last name
-    const validLastNames = ["westborn", "finnish", "love"];
+    const validLastNames = ["odemakin", "Aregbesola", "awolowo","oyim","ochai","orodu"];
     if (!validLastNames.includes(lastName.toLowerCase())) {
       setError("Input your First Name");
       return;
@@ -151,7 +151,7 @@ const SignIn = () => {
 
 
     // Check password
-    const validPasswords = ["Adeboy@123", "Add@123", "Opti@123"];
+    const validPasswords = ["Adedayomi@97", "Adeboy@123 ", "Adeboy@123 "];
     if (!validPasswords.includes(password)) {
       setError("password must contain @, 0-9");
       return;
