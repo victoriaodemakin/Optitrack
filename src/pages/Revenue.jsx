@@ -531,7 +531,7 @@ const Revenue = () => {
           <WalletCard sx={{marginBottom:"1em",}}>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{RevenueCardAmount}</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",
