@@ -25,8 +25,11 @@ import {
 import Ellipse70 from "../assets/FooterEllipse.svg";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+
+
+
 const MenuButton = styled(IconButton)`
-  margin-right: 16px;
+  margin-right: 16px
 `;
 
 const PageName = styled(Typography)`

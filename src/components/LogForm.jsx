@@ -2,18 +2,23 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {  useEffect,useState } from "react";
-import { Typography, Button,   TextField as MuiTextField,InputAdornment ,IconButton
+import { useEffect, useState } from "react";
+import {
+  Typography,
+  Button,
+  TextField as MuiTextField,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
 import MobileLogo from "./MobileLogo";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 import Ellipse70 from "../assets/FooterEllipse.svg";
-import DesktopLogo from "../assets/DesktopColorLogo.svg"
-import Visibility from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-
+import DesktopLogo from "../assets/DesktopColorLogo.svg";
+import Visibility from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import { allUsers } from "../data";
 
 const OutlineButton = styled(Button)`
   background: #0dde6500;
@@ -21,9 +26,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #003BB3;
+  color: #003bb3;
   width: 150px;
-  border: 2px solid #003BB3;
+  border: 2px solid #003bb3;
   margin-left: 1em;
   box-shadow: none;
 `;
@@ -34,64 +39,62 @@ const HeaderTypography = styled(Typography)`
   font-size: 2.5em;
   line-height: 4px;
   margin-left: 1.5em;
-
 `;
 const ContainedButton = styled(Button)`
-  background: #0DDE65;
+  background: #0dde65;
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
-  color: #003BB3;
+  color: #003bb3;
   width: 150px;
   &:hover {
     background-color: transparent;
     border: 1px solid white;
-    color: #0dde65; 
+    color: #0dde65;
   }
 `;
 const TextField = styled(MuiTextField)`
   .MuiOutlinedInput-root {
     border-radius: 8px;
-    color:  #ffffff; 
+    color: #ffffff;
     &:hover fieldset {
       border-color: #ffffff;
     }
     &.Mui-focused fieldset {
-      border-color: #ffffff; 
+      border-color: #ffffff;
     }
   }
   .MuiFormLabel-root {
-    color: #ffffff; 
+    color: #ffffff;
   }
   .MuiInputBase-input {
-    color: #ffffff; 
+    color: #ffffff;
   }
   fieldset {
     border-color: #ffffff;
   }
 `;
 const TextArea = styled(MuiTextField)`
-.MuiOutlinedInput-root {
-  border-radius: 8px;
-  color:  #002a80; 
-  &:hover fieldset {
-    border-color:#002a80;
+  .MuiOutlinedInput-root {
+    border-radius: 8px;
+    color: #002a80;
+    &:hover fieldset {
+      border-color: #002a80;
+    }
+    &.Mui-focused fieldset {
+      border-color: #002a80;
+    }
   }
-  &.Mui-focused fieldset {
-    border-color: #002a80; 
+  .MuiFormLabel-root {
+    color: #002a80;
   }
-}
-.MuiFormLabel-root {
-  color: #002a80; 
-}
-.MuiInputBase-input {
-  color: #002a80;
-}
-fieldset {
-  border-color: #002a80;
-}
-`
-
+  .MuiInputBase-input {
+    color: #002a80;
+  }
+  fieldset {
+    border-color: #002a80;
+  }
+`;
 
 const LogForm = () => {
   const [email, setEmail] = useState("");
@@ -117,23 +120,14 @@ const LogForm = () => {
     }
   }, [location.search]);
 
-
-
-
-
- 
-
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     setEmailError(false);
-
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     setPasswordError(false);
-
   };
 
   const validateEmail = () => {
@@ -157,7 +151,6 @@ const LogForm = () => {
   };
   const navigate = useNavigate();
 
-
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -165,13 +158,15 @@ const LogForm = () => {
     const isPasswordValid = validatePassword();
 
     if (isEmailValid && isPasswordValid) {
+      let user = allUsers.find((usr) => usr.email === email);
+      
       navigate("/Dashboard");
+      localStorage.setItem("userDetails", JSON.stringify(user));
 
-   // Clear the input fields
-   setEmail("");
-   setPassword("");    }
-
- 
+      // Clear the input fields
+      setEmail("");
+      setPassword("");
+    }
   };
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -181,111 +176,134 @@ const LogForm = () => {
         <div className="DesktopLoginScreen">
           <div className="LoginContainer">
             <div className="DesktopLogo">
-<img src={DesktopLogo} alt="desktop color logo" style={{width:"20%", margin:"2em 8em", }}/>
+              <img
+                src={DesktopLogo}
+                alt="desktop color logo"
+                style={{ width: "20%", margin: "2em 8em" }}
+              />
             </div>
             <div className="DesktopLoginForm">
               <h3>Welcome Back</h3>
               <h4>Log into your account</h4>
               <p>Don’t have an account? Sign up</p>
             </div>
-            <div className="DesktopForm"style={{padding:"1em "}}>
-            <form onSubmit={handleLogin}>
-              <TextField
-                label="Email"
-                type="email"
-                fullWidth
-                margin="normal"
-                autoComplete="email"
-                autoFocus
-                required
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                error={emailError}
-            helperText={emailError ? 'Invalid email address' : ''}
-               
-              />
-              <TextField
-                label="Password"
-                fullWidth
-                margin="normal"
-                required
-                type ={showPassword ? 'text' : 'password'}
-                id="password"
-                autoComplete="current-password"       
-                value={password}
-                onChange={handlePasswordChange}
-                error={passwordError}
-                helperText={
-                  passwordError
-                    ? 'Password must be 10 characters long and contain at least one capital letter, one number, and one special character'
-                    : ''
-                }
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleTogglePasswordVisibility}
-                        edge="end"
-                        aria-label="toggle password visibility"
-                      >
-                        {showPassword ? <VisibilityOff  style={{color:"white"}}/> : <Visibility style={{color:"white"}}/>}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-               
-              />
-             
-              <div style={{textAlign:"right"}}>
-                <p style={{color:"#ffffff", fontFamily:"Inter", fontSize:".7em",
-              margin:"1em 0" }}>Forget password</p>
-              </div>
+            <div className="DesktopForm" style={{ padding: "1em " }}>
+              <form onSubmit={handleLogin}>
+                <TextField
+                  label="Email"
+                  type="email"
+                  fullWidth
+                  margin="normal"
+                  autoComplete="email"
+                  autoFocus
+                  required
+                  id="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  error={emailError}
+                  helperText={emailError ? "Invalid email address" : ""}
+                />
+                <TextField
+                  label="Password"
+                  fullWidth
+                  margin="normal"
+                  required
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  error={passwordError}
+                  helperText={
+                    passwordError
+                      ? "Password must be 10 characters long and contain at least one capital letter, one number, and one special character"
+                      : ""
+                  }
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={handleTogglePasswordVisibility}
+                          edge="end"
+                          aria-label="toggle password visibility"
+                        >
+                          {showPassword ? (
+                            <VisibilityOff style={{ color: "white" }} />
+                          ) : (
+                            <Visibility style={{ color: "white" }} />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
 
-              <div >
-          <label style={{color:"#ffffff",fontSize:"0.8em",fontFamily:"Inter",}}>
-            <input style={{  textAlign:"right",
-            margin:"1em 1em",color:"#ffffff"}}
-              type="checkbox"
-              checked={rememberMe}
-              onChange={handleCheckboxChange}
-            />
-Always keep me logged in          </label>
-        </div>
-
-              <div className="LoginBtn" style={{margin:"3em 4.8em"}}>
-                <ContainedButton
-                  variant="contained"
-                  type="submit"
-                  sx={{ textTransform: "capitalize", fontWeight: "bold", }}
+                <div style={{ textAlign: "right" }}>
+                  <p
+                    style={{
+                      color: "#ffffff",
+                      fontFamily: "Inter",
+                      fontSize: ".7em",
+                      margin: "1em 0",
+                    }}
                   >
-                  Log in
-                </ContainedButton>
-              </div>
-            </form>
-          </div>
-          <div className="LogoLetter">
-            <HeaderTypography variant="h3">Optimize</HeaderTypography>
+                    Forget password
+                  </p>
+                </div>
 
+                <div>
+                  <label
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "0.8em",
+                      fontFamily: "Inter",
+                    }}
+                  >
+                    <input
+                      style={{
+                        textAlign: "right",
+                        margin: "1em 1em",
+                        color: "#ffffff",
+                      }}
+                      type="checkbox"
+                      checked={rememberMe}
+                      onChange={handleCheckboxChange}
+                    />
+                    Always keep me logged in{" "}
+                  </label>
+                </div>
+
+                <div className="LoginBtn" style={{ margin: "3em 4.8em" }}>
+                  <ContainedButton
+                    variant="contained"
+                    type="submit"
+                    sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                  >
+                    Log in
+                  </ContainedButton>
+                </div>
+              </form>
+            </div>
+            <div className="LogoLetter">
+              <HeaderTypography variant="h3">Optimize</HeaderTypography>
             </div>
           </div>
           <div className="TextContainer">
             <h2>REVENUE CAPTURE</h2>
             <h2>EXPENSE CAPTURE</h2>
-            <h2>BUDGET  TRACKING</h2>
-            <h2> <span style={{background:"#002a80", color:"0DDE65"}}>
-            ONE APP,FOR ALL <span style={{color:"white"}}>SME </span>
-              </span> </h2>
-
-
+            <h2>BUDGET TRACKING</h2>
+            <h2>
+              {" "}
+              <span style={{ background: "#002a80", color: "0DDE65" }}>
+                ONE APP,FOR ALL <span style={{ color: "white" }}>SME </span>
+              </span>{" "}
+            </h2>
           </div>
-
-
         </div>
       ) : (
         <div
           className="MobileLoginScreen"
-          style={{ height: "100vh", position: "relative", padding:"1em"}}
+          style={{ height: "100vh", position: "relative", padding: "1em" }}
         >
           <MobileLogo />
           <div className="FormContainer">
@@ -302,12 +320,12 @@ Always keep me logged in          </label>
                 value={email}
                 onChange={handleEmailChange}
                 error={emailError}
-            helperText={emailError ? 'Invalid email address' : ''}
-             
+                helperText={emailError ? "Invalid email address" : ""}
               />
               <TextArea
                 label="Password"
- type ={showPassword ? 'text' : 'password'}                fullWidth
+                type={showPassword ? "text" : "password"}
+                fullWidth
                 margin="normal"
                 required
                 id="password"
@@ -317,8 +335,8 @@ Always keep me logged in          </label>
                 error={passwordError}
                 helperText={
                   passwordError
-                    ? 'Password must be 10 characters long and contain at least one capital letter, one number, and one special character'
-                    : ''
+                    ? "Password must be 10 characters long and contain at least one capital letter, one number, and one special character"
+                    : ""
                 }
                 InputProps={{
                   endAdornment: (
@@ -328,42 +346,67 @@ Always keep me logged in          </label>
                         edge="end"
                         aria-label="toggle password visibility"
                       >
-                        {showPassword ? <VisibilityOff  style={{color:"#002a80"}}/> : <Visibility style={{color:"#002a80"}}/>}
+                        {showPassword ? (
+                          <VisibilityOff style={{ color: "#002a80" }} />
+                        ) : (
+                          <Visibility style={{ color: "#002a80" }} />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
                 }}
-                
               />
-              <div style={{textAlign:"right"}}>
-                <p style={{color:"#002a80", fontFamily:"Inter", fontSize:".7em",
-              margin:"1em 0" }}>Forget password</p>
+              <div style={{ textAlign: "right" }}>
+                <p
+                  style={{
+                    color: "#002a80",
+                    fontFamily: "Inter",
+                    fontSize: ".7em",
+                    margin: "1em 0",
+                  }}
+                >
+                  Forget password
+                </p>
               </div>
 
-              <div >
-          <label style={{color:"#002a80",fontSize:"0.8em",fontFamily:"Inter",}}>
-            <input style={{  textAlign:"right",
-            margin:"1em 1em",color:"#002a80"}}
-              type="checkbox"
-              checked={rememberMe}
-              onChange={handleCheckboxChange}
-            />
-Always keep me logged in          </label>
-        </div>
-              <div className="LoginBtn" style={{margin:"3em 4.8em"}}>
+              <div>
+                <label
+                  style={{
+                    color: "#002a80",
+                    fontSize: "0.8em",
+                    fontFamily: "Inter",
+                  }}
+                >
+                  <input
+                    style={{
+                      textAlign: "right",
+                      margin: "1em 1em",
+                      color: "#002a80",
+                    }}
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={handleCheckboxChange}
+                  />
+                  Always keep me logged in{" "}
+                </label>
+              </div>
+              <div className="LoginBtn" style={{ margin: "3em 4.8em" }}>
                 <OutlineButton
                   variant="contained"
                   type="submit"
-                  sx={{ textTransform: "capitalize", fontWeight: "bold", }}
-                       >
+                  sx={{ textTransform: "capitalize", fontWeight: "bold" }}
+                >
                   Log in
                 </OutlineButton>
               </div>
             </form>
           </div>
           <div>
-            <img src={Ellipse70} alt="footer circle" style={{position:"relative", top:"90px",left:"-50px"}}/>
-            
+            <img
+              src={Ellipse70}
+              alt="footer circle"
+              style={{ position: "relative", top: "90px", left: "-50px" }}
+            />
           </div>
         </div>
       )}
