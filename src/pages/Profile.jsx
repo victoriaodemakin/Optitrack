@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled } from "@mui/material/styles";
 import {
@@ -15,7 +15,7 @@ import MobileNav from "../components/MobileNav";
 // Styles
 
 const ContainedButton = styled(Button)`
-  background: #003BB3;
+  background: #003bb3;
   border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
@@ -28,9 +28,9 @@ const OutlineButton = styled(Button)`
   font-style: normal;
   font-weight: 500;
   font-size: 1em;
-  color: #003BB3;
+  color: #003bb3;
   width: 150px;
-  border: 2px solid #003BB3;
+  border: 2px solid #003bb3;
   margin-left: 1em;
 `;
 
@@ -68,20 +68,6 @@ const LogoUploadButton = styled(Button)`
   text-transform: none;
 `;
 
-// const LogoUploadButton = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-//   cursor: pointer;
-// `;
-
-// const FormContainer = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
-//   width: 400px;
-// `;
-
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [logo, setLogo] = useState("");
@@ -91,22 +77,121 @@ const Profile = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [description, setDescription] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("userDetails"))
+  );
 
   const handleLogoUpload = (event) => {
     const file = event.target.files[0];
     setLogo(URL.createObjectURL(file));
   };
+console.log(inputValue)
+  const dataUser = {
+    avatar: "Mr",
+    name: businessName,
+    description: description,
+    accountId: "d6ee3195-c510-499f-073c-08db659b033f",
+  };
+  const getBusinessDetails = () => {
+    try {
+    fetch(
+        `https://opti-trackapi.azurewebsites.net/api/Businesss/get-business/${user?.businessId}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setInputValue(data)
+          setBusinessName(data.name)
+          setBusinessName(data.name)
+          console.log(data, "response")
+        });
 
-  const handleSaveChanges = () => {
+      // console.log(businessName);
+      // console.log(description);
+
+      // if (response.ok) {
+      //   const responseData = await response.json();
+      //   console.log(responseData, "the response data");
+      //   console.log(responseData.data);
+      //   let updatedUser = JSON.parse(localStorage.getItem("userDetails"));
+      //   updatedUser = {
+      //     ...updatedUser,
+      //     businessId: responseData[0],
+      //     walletId: responseData[1],
+      //   };
+      //   console.log(updatedUser, "the updated user");
+      //   localStorage.setItem("userDetails", JSON.stringify(updatedUser));
+
+      //businessID
+      // setData(responseData);
+      // console.log(data);
+
+      // localStorage.setItem('modal-trigger', true)
+      // navigate("/receipt");
+      // } else {
+      //   const errorData = await response.json();
+      //   console.error("Transfer failed:", errorData);
+      //   // Handle specific error scenarios based on errorData
+      // }
+    } catch (error) {
+      console.error("Error sending transfer request:", error);
+    }
+  };
+  useEffect(() => {
+    getBusinessDetails();
+  }, [getBusinessDetails]);
+
+  const handleSaveChanges = async (event) => {
     setIsEditing(false);
-  
-  
-    // Send a POST request to the API endpoint
 
-  
+    // Send a POST request to the API endpoint
+    try {
+      const response = await fetch(
+        "https://opti-trackapi.azurewebsites.net/api/Businesss/create-business",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "text/plain",
+          },
+          body: JSON.stringify(dataUser),
+        }
+      );
+      console.log(businessName);
+      console.log(description);
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData, "the response data");
+        console.log(responseData.data);
+        let updatedUser = JSON.parse(localStorage.getItem("userDetails"));
+        updatedUser = {
+          ...updatedUser,
+          businessId: responseData[0],
+          walletId: responseData[1],
+        };
+        console.log(updatedUser, "the updated user");
+        localStorage.setItem("userDetails", JSON.stringify(updatedUser));
+
+        //businessID
+        // setData(responseData);
+        // console.log(data);
+
+        // localStorage.setItem('modal-trigger', true)
+        // navigate("/receipt");
+      } else {
+        const errorData = await response.json();
+        console.error("Transfer failed:", errorData);
+        // Handle specific error scenarios based on errorData
+      }
+    } catch (error) {
+      console.error("Error sending transfer request:", error);
+    }
+    setInputValue(event.target.value);
+    console.log(setUser)
+
   };
 
-  
   const fileInputRef = useRef(null);
 
   const handleUploadButtonClick = () => {
@@ -126,9 +211,6 @@ const Profile = () => {
     // All form fields are filled
     // Proceed with form submission or other actions
     console.log("Form submitted!");
-  } else {
-    // Display error message or handle incomplete form submission
-    console.log("Please fill in all the required fields");
   }
 
   return (
@@ -197,6 +279,7 @@ const Profile = () => {
                 required
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
+                
                 disabled={isEditing}
                 sx={{ marginBottom: "25px", width: "600px", marginTop: "1em" }}
               />
@@ -271,7 +354,11 @@ const Profile = () => {
               </OutlineButton>
             </div>
           </div>
-          <Modal open={openModal} onClose={handleModalClose} sx={{background:"rgba(0,42,128,0.5)"}} >
+          <Modal
+            open={openModal}
+            onClose={handleModalClose}
+            sx={{ background: "rgba(0,42,128,0.5)" }}
+          >
             <div
               className="ModalContainer"
               style={{
@@ -567,7 +654,11 @@ const Profile = () => {
                 Update User{" "}
               </OutlineButton>
             </div>
-            <Modal open={openModal} onClose={handleModalClose} sx={{background:"rgba(0,42,128,0.5)"}} >
+            <Modal
+              open={openModal}
+              onClose={handleModalClose}
+              sx={{ background: "rgba(0,42,128,0.5)" }}
+            >
               <div
                 className="ModalContainer"
                 style={{

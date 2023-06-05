@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery"
 import TopNav from "../components/TopNav";
 // import { Card } from '@mui/material';
@@ -237,11 +237,25 @@ const Expense = () => {
     closeModal();
 
   };
+
+  useEffect(() => {
+    // Load expense data from local storage on component mount
+    const storedExpense = localStorage.getItem('expense');
+    const parsedExpense = storedExpense ? JSON.parse(storedExpense) : [];
+    setExpense(parsedExpense);
+  }, []);
+
+  // Save expense data to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('expense', JSON.stringify(expense));
+  }, [expense]);
+
   const handleSaveTable = () => {
     const totalAmount = expense.reduce((sum, item) => sum + parseFloat(item.amount), 0);
 
     // Update the amount on the card
     setExpenseCardAmount(totalAmount);
+    
 
     // Code to save the table to the database
     console.log('Table saved to the database')    

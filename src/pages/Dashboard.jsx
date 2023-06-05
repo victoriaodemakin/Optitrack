@@ -7,6 +7,7 @@ import { Box, Card,  Typography } from "@mui/material";
 import ChartBar from '../components/ChartBar';
 import axios from "axios";
 import ChartPie from '../components/ChartPie';
+import TestChart from '../components/TestChart';
 import { styled } from "@mui/material/styles";
 
 const CardContainer = styled("div")(({ theme }) => ({
@@ -119,6 +120,7 @@ const Dashboard = () => {
         <div className="ChartContainer">
           <ChartBar/>
           <ChartPie/>
+          <TestChart/>
         </div>
           
         </div>

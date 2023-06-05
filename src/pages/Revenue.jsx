@@ -234,7 +234,44 @@ const Revenue = () => {
     closeModal();
 
   };
-  const handleSaveTable = () => {
+  const handleSaveTable = async (event) =>{
+
+    // try {
+    //   const response = await fetch(
+    //     "https://leali-web.azurewebsites.net/TransferMoney",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         accept: "text/plain",
+    //       },
+    //       body: JSON.stringify({
+    //         AccountNo:AccountNo,
+    //         Amount:Amount,
+    //       }),
+    //     }
+    //   );
+
+    //   console.log();
+
+    //   if (response.ok) {
+    //     const responseData = await response.json();
+    //     console.log(responseData.success);
+    //     console.log(responseData);
+    //     localStorage.setItem('modal-trigger', true)
+    //     navigate("/receipt");
+    //   } else {
+    //     const errorData = await response.json();
+    //     console.error("Transfer failed:", errorData);
+    //     // Handle specific error scenarios based on errorData
+    //   }
+    // } catch (error) {
+    //   console.error("Error sending transfer request:", error);
+    // }
+
+
+
+
     // Code to save the table to the database
     const totalAmount = revenue.reduce((sum, item) => sum + parseFloat(item.amount), 0);
 
@@ -243,6 +280,13 @@ const Revenue = () => {
 
     // Code to save the table to the database
     console.log('Table saved to the database')   };
+
+
+
+
+
+
+
   const handleFetchTable = () => {
     // Code to fetch the table from the database
     console.log('Table fetched from the database');
@@ -420,7 +464,7 @@ const Revenue = () => {
     </div>
             <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
               <TextField
-                label="Revenue Name"
+                label="Product Code"
                 value={revenueName}
                 onChange={(e) => setRevenueName(e.target.value)}
                 required
@@ -475,6 +519,25 @@ const Revenue = () => {
                 size="small"
                 fullWidth
               />
+               <div className="AmountContainer">
+              <TextField
+                type="number"
+                label="Quantity"
+                value={editingIndex !== null ? editAmount : amount}
+                onChange={(e) => {
+                  if (editingIndex !== null) {
+                    setEditAmount(e.target.value);
+                  } else {
+                    setAmount(e.target.value);
+                  }
+                }}
+                required
+                sx={{ marginBottom: "10px", width: "450px", marginRight:"1em"}}
+                size="small"
+                fullWidth
+              />
+             
+              </div>
               <FormControl required>
                 <InputLabel>Category</InputLabel>
                 <Select
@@ -489,7 +552,7 @@ const Revenue = () => {
                   sx={{ marginBottom: "10px", width: "569px",padding:".3em 0"}}
                   size="small"
                   fullWidth>
-                  <MenuItem value="">Select Category</MenuItem>
+                  <MenuItem value="">Product Code</MenuItem>
                   <MenuItem value="Cost of Sales">Cost of Sales</MenuItem>
                   <MenuItem value="Salary">Salary</MenuItem>
                   <MenuItem value="Selling">Selling</MenuItem>
