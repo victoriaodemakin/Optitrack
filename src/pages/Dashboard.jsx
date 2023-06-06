@@ -126,7 +126,7 @@ const Dashboard = () => {
           <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>50,000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
-  backgroundColor: "#D9D9D9",
+  backgroundColor: "red",
   alignSelf: "flex-end",}}>
 
   </div>

@@ -630,7 +630,7 @@ setIsTableVisible(false);
       <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{expenseCardAmount}</Typography>
      <div className='BoxColor' style={{  width: "24px",
 height: "24px",
-backgroundColor: "#4ED273",
+backgroundColor: "red",
 alignSelf: "flex-end",}}>
 
 </div>
@@ -707,10 +707,9 @@ fontFamily: "Urbanist",fontWeight: "500",margin:"0 auto"
             padding: "2em 1em",
           }}>
         <div className="formConatiner">
-        <div className="DesktopSignupForm" style={{marginBottom:"2em"}}>
-      <h2>Create a expense</h2>
-      <p>Create your wallet, Create your expense, We do the Tracking </p>
-      
+        <div className="DesktopSignupForm" style={{marginBottom:"1em", fontFamily: "inter", color: "#002a80", lineHeight: "2em", textAlign: "center"}}>
+      <h2>Add expense</h2>
+      <p>Create your wallet, Add your expenses, We do the Tracking! </p>
 </div>
         <form onSubmit={editingIndex !== null ? handleUpdate : handleSubmit} style={{display:"flex", flexDirection:"column", gap:7}}>
           <TextField
