@@ -137,7 +137,7 @@ const Dashboard = () => {
 
   </div>
         </WalletCard>
-        <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
+        {/* <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>loss</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
           <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>30000</Typography>
@@ -153,7 +153,7 @@ const Dashboard = () => {
   height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:".6em"}}>
 
   </div>
-        </WalletCard>
+        </WalletCard> */}
       </CardContainer>
     </Box>
 

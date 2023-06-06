@@ -70,7 +70,6 @@ const ChartBar = () => {
         <Legend />
         <Bar dataKey="revenue" fill="#4ED273" name="Revenue" />
         <Bar dataKey="expense" fill="#4287f5" name="Expense" />
-        <Bar dataKey="loss" fill="#ff4136" name="Loss" />
       </BarChart>
     </div>
       )}
