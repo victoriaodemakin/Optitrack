@@ -520,25 +520,7 @@ const Revenue = () => {
                 size="small"
                 fullWidth
               />
-               <div className="AmountContainer">
-              <TextField
-                type="number"
-                label="Quantity"
-                value={editingIndex !== null ? editAmount : amount}
-                onChange={(e) => {
-                  if (editingIndex !== null) {
-                    setEditAmount(e.target.value);
-                  } else {
-                    setAmount(e.target.value);
-                  }
-                }}
-                required
-                sx={{ marginBottom: "10px", width: "450px", marginRight:"1em"}}
-                size="small"
-                fullWidth
-              />
-             
-              </div>
+              
               <FormControl required>
                 <InputLabel>Category</InputLabel>
                 <Select
