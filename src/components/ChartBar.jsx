@@ -22,18 +22,18 @@ const HeaderTypography = styled(Typography)`
 `;
 
 const data = [
-  { name: 'Jan', revenue: 5000, expense: 3000, loss: 2000 },
-  { name: 'Feb', revenue: 6000, expense: 3500, loss: 2500 },
-  { name: 'Mar', revenue: 4000, expense: 2000, loss: 3000 },
-  { name: 'Apr', revenue: 4500, expense: 2800, loss: 2200 },
-  { name: 'May', revenue: 5500, expense: 3200, loss: 1800 },
-  { name: 'Jun', revenue: 6500, expense: 3800, loss: 2700 },
-  { name: 'Jul', revenue: 7000, expense: 4000, loss: 3200 },
-  { name: 'Aug', revenue: 4800, expense: 2500, loss: 2300 },
-  { name: 'Sep', revenue: 5200, expense: 2900, loss: 2800 },
-  { name: 'Oct', revenue: 5800, expense: 3300, loss: 2600 },
-  { name: 'Nov', revenue: 6200, expense: 3600, loss: 2000 },
-  { name: 'Dec', revenue: 6800, expense: 4100, loss: 2400 },
+  { name: 'Jan', revenue: 5000, expense: 3000,  },
+  { name: 'Feb', revenue: 6000, expense: 3500,  },
+  { name: 'Mar', revenue: 4000, expense: 2000,  },
+  { name: 'Apr', revenue: 4500, expense: 2800,  },
+  { name: 'May', revenue: 5500, expense: 3200, },
+  { name: 'Jun', revenue: 6500, expense: 3800,  },
+  { name: 'Jul', revenue: 7000, expense: 4000, },
+  { name: 'Aug', revenue: 4800, expense: 2500,   },
+  { name: 'Sep', revenue: 5200, expense: 2900,  },
+  { name: 'Oct', revenue: 5800, expense: 3300,  },
+  { name: 'Nov', revenue: 6200, expense: 3600,  },
+  { name: 'Dec', revenue: 6800, expense: 4100, },
 ];
 
 
@@ -56,7 +56,6 @@ const ChartBar = () => {
           <Legend />
           <Bar dataKey="revenue" fill="#4ED273" name="Revenue" />
           <Bar dataKey="expense" fill="#4287f5" name="Expense" />
-          <Bar dataKey="loss" fill="#ff4136" name="Loss" />
         </BarChart>
       </div>
       ) : (

@@ -191,6 +191,7 @@ const Revenue = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [revenue, setRevenue] = useState([]);
   const [amount, setAmount] = useState('');
+
   const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
   const [revenueName, setRevenueName] = useState('');
