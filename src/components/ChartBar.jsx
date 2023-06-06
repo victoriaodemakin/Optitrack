@@ -27,13 +27,9 @@ const data = [
   { name: 'Mar', revenue: 4000, expense: 2000,  },
   { name: 'Apr', revenue: 4500, expense: 2800,  },
   { name: 'May', revenue: 5500, expense: 3200, },
-  { name: 'Jun', revenue: 6500, expense: 3800,  },
-  { name: 'Jul', revenue: 7000, expense: 4000, },
-  { name: 'Aug', revenue: 4800, expense: 2500,   },
-  { name: 'Sep', revenue: 5200, expense: 2900,  },
-  { name: 'Oct', revenue: 5800, expense: 3300,  },
-  { name: 'Nov', revenue: 6200, expense: 3600,  },
-  { name: 'Dec', revenue: 6800, expense: 4100, },
+  { name: 'June', revenue: 5500, expense: 3200, },
+
+ 
 ];
 
 
