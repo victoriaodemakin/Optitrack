@@ -343,14 +343,14 @@ console.log(inputValue)
                 sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                 onClick={handleSaveChanges}
               >
-                Save Changes
+                Create Business
               </ContainedButton>
               <OutlineButton
                 variant="outlined"
                 sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                 onClick={handleUpdateClick}
               >
-                Update User{" "}
+                Upadate Info{" "}
               </OutlineButton>
             </div>
           </div>

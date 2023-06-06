@@ -106,7 +106,7 @@ const Dashboard = () => {
         <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"500"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"600",fontSize:"2em"}}>{}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"600",fontSize:"2em"}}>120000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",
@@ -123,7 +123,7 @@ const Dashboard = () => {
         <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Expense</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>50,000</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>150,000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
@@ -140,7 +140,7 @@ const Dashboard = () => {
         <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>loss</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>20000</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>30000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
