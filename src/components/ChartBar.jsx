@@ -54,7 +54,7 @@ const ChartBar = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="revenue" fill="#4ED273" name="Revenue" />
+          <Bar dataKey="revenue" fill="#4ED273" name="Budget" />
           <Bar dataKey="expense" fill="#4287f5" name="Expense" />
         </BarChart>
       </div>
