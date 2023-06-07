@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect   } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TopNav from "../components/TopNav";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/SaveAlt";
 import FetchIcon from "@mui/icons-material/Preview";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { useDispatch } from 'react-redux';
 
 import {
   Button,
@@ -176,9 +177,10 @@ const Budgeting = () => {
 
   const [detailsDescription, setDetailsDescription] = useState("");
   const [detailsCategory, setDetailsCategory] = useState("");
-  // const [user, setUser] = useState(
-  //   JSON.parse(localStorage.getItem("userDetails"))
-  // );
+
+  const dispatch = useDispatch();
+
+  
 
   const openModal = () => {
     setShowModal(true);
@@ -187,9 +189,15 @@ const Budgeting = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: 'UPDATE_BUDGET_AMOUNT', payload: amount });
+
+  
+
 
     const newBudget = {
       amount,
@@ -339,6 +347,13 @@ setIsTableVisible(false);
     setEditCategory("");
     closeModal();
   };
+  // const { handleBudgetAmountChange } = useContext(AmountContext);
+
+  // const handleAmountChange = (event) => {
+  //   setAmount(event.target.value);
+  //   const amount = parseFloat(event.target.value);
+  //   handleBudgetAmountChange(amount);
+  // };
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -477,10 +492,7 @@ setIsTableVisible(false);
                     }}
                   >
                     <div className="formConatiner">
-                      <div
-                        className="DesktopSignupForm"
-                        style={{ marginBottom: "2em" }}
-                      >
+                    <div className="DesktopSignupForm" style={{marginBottom:"1em", fontFamily: "inter", color: "#002a80", lineHeight: "2em", textAlign: "center"}}>
                         <h2>Create a Budget</h2>
                         <p>
                           Create your wallet, Create your budget, We do the
@@ -515,19 +527,7 @@ setIsTableVisible(false);
                             type="number"
                             label="Amount"
                             value={editingIndex !== null ? editAmount : amount}
-                            onChange={(e) => {
-                              console.log("hi from input");
-                              if (editingIndex !== null) {
-                                console.log(
-                                  e.target.value,
-                                  "amountval editing index not null"
-                                );
-                                setEditAmount(e.target.value);
-                              } else {
-                                console.log(e.target.value, "amountval");
-                                setAmount(e.target.value);
-                              }
-                            }}
+                            onChange={handleAmountChange}
                             required
                             sx={{
                               marginBottom: "10px",
@@ -777,10 +777,7 @@ setIsTableVisible(false);
                     }}
                   >
                     <div className="formConatiner">
-                      <div
-                        className="DesktopSignupForm"
-                        style={{ marginBottom: "2em" }}
-                      >
+                    <div className="DesktopSignupForm" style={{marginBottom:"1em", fontFamily: "inter", color: "#002a80", lineHeight: "2em", textAlign: "center"}}>
                         <h2>Create a Budget</h2>
                         <p>
                           Create your wallet, Create your budget, We do the

@@ -32,12 +32,7 @@ const data = [
   { name: "Apr", revenue: 4500, expense: 2800, loss: 2200 },
   { name: "May", revenue: 5500, expense: 3200, loss: 1800 },
   { name: "Jun", revenue: 6500, expense: 3800, loss: 2700 },
-  { name: "Jul", revenue: 7000, expense: 4000, loss: 3200 },
-  { name: "Aug", revenue: 4800, expense: 2500, loss: 2300 },
-  { name: "Sep", revenue: 5200, expense: 2900, loss: 2800 },
-  { name: "Oct", revenue: 5800, expense: 3300, loss: 2600 },
-  { name: "Nov", revenue: 6200, expense: 3600, loss: 2000 },
-  { name: "Dec", revenue: 6800, expense: 4100, loss: 2400 },
+
 ];
 
 

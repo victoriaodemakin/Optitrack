@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled } from "@mui/material/styles";
 import {
@@ -78,9 +78,9 @@ const Profile = () => {
   const [description, setDescription] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("userDetails"))
-  );
+  // const [user, setUser] = useState(
+  //   JSON.parse(localStorage.getItem("userDetails"))
+  // );
 
   const handleLogoUpload = (event) => {
     const file = event.target.files[0];
@@ -93,53 +93,53 @@ console.log(inputValue)
     description: description,
     accountId: "d6ee3195-c510-499f-073c-08db659b033f",
   };
-  const getBusinessDetails = () => {
-    try {
-    fetch(
-        `https://opti-trackapi.azurewebsites.net/api/Businesss/get-business/${user?.businessId}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setInputValue(data)
-          setBusinessName(data.name)
-          setBusinessName(data.name)
-          console.log(data, "response")
-        });
+  // const getBusinessDetails = () => {
+  //   try {
+  //   fetch(
+  //       `https://opti-trackapi.azurewebsites.net/api/Businesss/get-business/${user?.businessId}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setInputValue(data)
+  //         setBusinessName(data.name)
+  //         setBusinessName(data.name)
+  //         console.log(data, "response")
+  //       });
 
-      // console.log(businessName);
-      // console.log(description);
+  //     // console.log(businessName);
+  //     // console.log(description);
 
-      // if (response.ok) {
-      //   const responseData = await response.json();
-      //   console.log(responseData, "the response data");
-      //   console.log(responseData.data);
-      //   let updatedUser = JSON.parse(localStorage.getItem("userDetails"));
-      //   updatedUser = {
-      //     ...updatedUser,
-      //     businessId: responseData[0],
-      //     walletId: responseData[1],
-      //   };
-      //   console.log(updatedUser, "the updated user");
-      //   localStorage.setItem("userDetails", JSON.stringify(updatedUser));
+  //     // if (response.ok) {
+  //     //   const responseData = await response.json();
+  //     //   console.log(responseData, "the response data");
+  //     //   console.log(responseData.data);
+  //     //   let updatedUser = JSON.parse(localStorage.getItem("userDetails"));
+  //     //   updatedUser = {
+  //     //     ...updatedUser,
+  //     //     businessId: responseData[0],
+  //     //     walletId: responseData[1],
+  //     //   };
+  //     //   console.log(updatedUser, "the updated user");
+  //     //   localStorage.setItem("userDetails", JSON.stringify(updatedUser));
 
-      //businessID
-      // setData(responseData);
-      // console.log(data);
+  //     //businessID
+  //     // setData(responseData);
+  //     // console.log(data);
 
-      // localStorage.setItem('modal-trigger', true)
-      // navigate("/receipt");
-      // } else {
-      //   const errorData = await response.json();
-      //   console.error("Transfer failed:", errorData);
-      //   // Handle specific error scenarios based on errorData
-      // }
-    } catch (error) {
-      console.error("Error sending transfer request:", error);
-    }
-  };
-  useEffect(() => {
-    getBusinessDetails();
-  }, [getBusinessDetails]);
+  //     // localStorage.setItem('modal-trigger', true)
+  //     // navigate("/receipt");
+  //     // } else {
+  //     //   const errorData = await response.json();
+  //     //   console.error("Transfer failed:", errorData);
+  //     //   // Handle specific error scenarios based on errorData
+  //     // }
+  //   } catch (error) {
+  //     console.error("Error sending transfer request:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getBusinessDetails();
+  // }, [getBusinessDetails]);
 
   const handleSaveChanges = async (event) => {
     setIsEditing(false);
@@ -188,7 +188,7 @@ console.log(inputValue)
       console.error("Error sending transfer request:", error);
     }
     setInputValue(event.target.value);
-    console.log(setUser)
+    // console.log(setUser)
 
   };
 
@@ -343,14 +343,14 @@ console.log(inputValue)
                 sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                 onClick={handleSaveChanges}
               >
-                Save Changes
+                Create Business
               </ContainedButton>
               <OutlineButton
                 variant="outlined"
                 sx={{ textTransform: "capitalize", fontWeight: "bold" }}
                 onClick={handleUpdateClick}
               >
-                Update User{" "}
+                Upadate Info{" "}
               </OutlineButton>
             </div>
           </div>

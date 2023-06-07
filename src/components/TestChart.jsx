@@ -1,30 +1,62 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import Expense from '../pages/Expense';
-import Budgeting from '../pages/Budgeting';
+// Dashboard.js
+import React from "react";
+import { useSelector } from "react-redux";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
+const HeaderTypography = styled(Typography)`
+  color: #002a80;
+  font-family: "Urbanist";
+  font-weight: 800;
+  font-size: 1.5em;
+  line-height: 4px;
+  margin-left: -2em
+  margin-bottom
+`;
+const TestChart = () => {
+  const expenseAmount = useSelector((state) => state.expense.expenseAmount);
+  const budgetAmount = useSelector((state) => state.budget.budgetAmount);
 
-const TestChart = ({ expenseData, budgetingData }) => {
-  // Load expense data from local storage
-  const storedExpense = localStorage.getItem('expense');
-  const parsedExpense = storedExpense ? JSON.parse(storedExpense) : [];
+  const data = [
+    { name: "Actual Expense", amount: expenseAmount },
+    { name: "Budget", amount: budgetAmount },
+  ];
 
-  // Load budget data from local storage
-  const storedBudget = localStorage.getItem('budgets');
-  const parsedBudget = storedBudget ? JSON.parse(storedBudget) : [];
-
-  // Combine expense and budget data into a single array for chart
-  const chartData = [...parsedExpense, ...parsedBudget];
+  const getBarColor = (entry) => {
+    if (entry.name === "Expense") {
+      return "lightblue";
+    }
+    return "blue";
+  };
 
   return (
-    <div style={{ position: "absolute", left: "335px", top: "1320px", zIndex:"999" }}>
-      <h1>Dashboard</h1>
-      <BarChart width={500} height={300} data={{expenseData}}>
+    <div
+      style={{
+        position: "absolute",
+        left: "630px",
+        top: "10px",
+        zIndex: "999",
+      }}
+    >
+      <HeaderTypography style={{marginBottom:"2em", marginLeft:"3em"}}>Daily Analysis</HeaderTypography>
+      <BarChart width={400} height={200} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="amount" fill="#8884d8" />
+        <Bar dataKey="{expenseAmount}" fill={getBarColor} />
+        <Bar dataKey="amount" fill="#4ED273"  />
+
       </BarChart>
     </div>
   );

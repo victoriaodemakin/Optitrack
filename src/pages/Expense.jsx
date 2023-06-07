@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect  } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery"
 import TopNav from "../components/TopNav";
 // import { Card } from '@mui/material';
@@ -10,6 +10,8 @@ import MobileExpenseImg from '../assets/cost 1.svg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/SaveAlt';import FetchIcon from '@mui/icons-material/Preview';
+import { useDispatch } from 'react-redux';
+
 import {  Card, Typography } from "@mui/material";
 
 
@@ -185,12 +187,15 @@ const WalletCard = styled(Card)(({ theme }) => ({
 
 const Expense = () => {
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [expense, setExpense] = useState([]);
   const [amount, setAmount] = useState('');
   const [categorydescription, setcategorydescription] = useState('');
   const [category, setCategory] = useState('');
   const [expenseName, setExpenseName] = useState('');
+  const [isTableVisible, setIsTableVisible] = useState(false);
   const [currency, setCurrency] = useState('NGN'); // Default currency is Naira
 
   const [editingIndex, setEditingIndex] = useState(null);
@@ -201,7 +206,9 @@ const Expense = () => {
   const [detailscategorydescription, setDetailscategorydescription] = useState('');
   const [detailsCategory, setDetailsCategory] = useState('');
   const [expenseCardAmount, setExpenseCardAmount] = useState(0);
-
+  
+ 
+  
 
   const openModal = () => {
     setShowModal(true);
@@ -218,8 +225,16 @@ const Expense = () => {
     setCurrency(expense.currency)
     openModal();
   };
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: 'UPDATE_EXPENSE_AMOUNT', payload: amount });
+
+   
+  
+
 
     const newExpense = {
       amount,
@@ -236,22 +251,37 @@ const Expense = () => {
     setCurrency('NGN')
     closeModal();
 
+    
+    localStorage.setItem('expenseTable', JSON.stringify([...expense, newExpense]));
+    setIsTableVisible(true);
   };
 
-  useEffect(() => {
-    // Load expense data from local storage on component mount
-    const storedExpense = localStorage.getItem('expense');
-    const parsedExpense = storedExpense ? JSON.parse(storedExpense) : [];
-    setExpense(parsedExpense);
-  }, []);
+  // useEffect(() => {
+  //   // Load expense data from local storage on component mount
+  //   const storedExpense = localStorage.getItem('expense');
+  //   const parsedExpense = storedExpense ? JSON.parse(storedExpense) : [];
+  //   setExpense(parsedExpense);
+  // }, []);
 
   // Save expense data to local storage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('expense', JSON.stringify(expense));
-  }, [expense]);
+  // useEffect(() => {
+  //   localStorage.setItem('expense', JSON.stringify(expense));
+  // }, [expense]);
+
+   useEffect(() => {
+    const savedTable = localStorage.getItem('expenseTable');
+    if (savedTable) {
+      setExpense(JSON.parse(savedTable));
+      setIsTableVisible(true);
+    }
+  }, []);
 
   const handleSaveTable = () => {
     const totalAmount = expense.reduce((sum, item) => sum + parseFloat(item.amount), 0);
+
+     localStorage.setItem('expenseTable', JSON.stringify(expense));
+console.log('budget is saved')
+setIsTableVisible(false);
 
     // Update the amount on the card
     setExpenseCardAmount(totalAmount);
@@ -262,6 +292,11 @@ const Expense = () => {
   };
   const handleFetchTable = () => {
     // Code to fetch the table from the database
+      const savedTable = localStorage.getItem('expenseTable');
+    if (savedTable) {
+      setExpense(JSON.parse(savedTable));
+      setIsTableVisible(true);
+    }
     console.log('Table fetched from the database');
   };
 
@@ -322,15 +357,7 @@ const Expense = () => {
     closeModal();
   };
 
-
-  // create a function called addAmounts
-  // Inside the function it should iterating through all the expenses in your storage using the id.
-  //  total+= expense.amount
-  // set state
-
-  // create usestate and initialize, 
-
-// {} so you will use this to display it inside the text or font e.g. h4
+  
 
 
  const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -374,8 +401,57 @@ const Expense = () => {
 
           </div>
    
+   {isTableVisible ? ( expense.length > 0 ? (
+        <Table>
+          <TableHead>
+            <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
+              <TableCell>Expense Name</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell>Category Description</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>Delete/Edit</TableCell>
 
-      {expense.length > 0 ? (
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {expense.map((Expense, index) => (
+              <TableRow key={index} >
+                <TableCell >{Expense.expenseName}</TableCell>
+                <TableCell>{`${Expense.amount} ${Expense.currency}`}</TableCell>
+                <TableCell>{Expense.categorydescription}</TableCell>
+                <TableCell>{Expense.category}</TableCell>
+                <TableCell>
+                  <IconButton onClick={() => handleDelete(index)} sx={{color:"#002a80"}}>
+                    <DeleteIcon />
+                  </IconButton>
+                  <IconButton onClick={() => handleEdit(index)} sx={{color:"#002a80"}}>
+                    <EditIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <ContainedButton variant="contained" color="primary" startIcon={<SaveIcon />} onClick={handleSaveTable} style={{marginTop:"9em"}}>
+        Save Table
+      </ContainedButton>
+        </Table>
+        
+      
+      ) : (
+<div className="NoExpense">
+
+<p style={{color: "#002a80",
+  fontFamily: "Urbanist",fontWeight: "500",
+  fontSize:"1em", margin:"5em 24em 1em 24em"
+}}>No Expense Available</p>
+</div>  
+      )  
+      ) : null} 
+
+
+
+
+      {/* {expense.length > 0 ? (
         <Table>
           <TableHead>
             <TableRow   sx={{ marginBottom: "25px", width: "600px", height:"30px" }}>
@@ -421,7 +497,7 @@ const Expense = () => {
 }}>No Expense Available</p>
 </div>     
 
-)}
+)} */}
 
       <Modal open={showModal} onClose={closeModal}sx={{background:"rgba(0,42,128,0.5)"}} >
         <div className="modal">
@@ -451,15 +527,16 @@ const Expense = () => {
               <div className="AmountContainer">
               <TextField
                 type="number"
-                label="Amount"
+                label="amount"
                 value={editingIndex !== null ? editAmount : amount}
-                onChange={(e) => {
-                  if (editingIndex !== null) {
-                    setEditAmount(e.target.value);
-                  } else {
-                    setAmount(e.target.value);
-                  }
-                }}
+               //   if (editingIndex !== null) {
+                    
+                //     setEditAmount(e.target.value);
+                //   } else {
+                //     setAmount(e.target.value);
+                //   }
+                // }}
+                onChange={handleAmountChange}               
                 required
                 sx={{ marginBottom: "10px", width: "450px", marginRight:"1em"}}
                 size="small"

@@ -1,11 +1,10 @@
-import React, { useState,useEffect  } from 'react'; //useeffect here
+import React, {   } from 'react'; //useeffect here
 import TopNav from "../components/TopNav";
 import Sidebar from "../components/Sidebar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MobileNav from "../components/MobileNav";
 import { Box, Card,  Typography } from "@mui/material";
 import ChartBar from '../components/ChartBar';
-import axios from "axios";
 import ChartPie from '../components/ChartPie';
 import TestChart from '../components/TestChart';
 import { styled } from "@mui/material/styles";
@@ -37,19 +36,7 @@ const HeaderTypography = styled(Typography)`
 `;
 
 const Dashboard = () => {
-  const [revenue, setRevenue] = useState(0);
-  const [expense, setExpense] = useState(0);
-  const [loss, setLoss] = useState(0);
-
-  // useEffect(() => {
-    // Fetch the wallet figures from the database
-    // axios.get("/api/wallet").then((response) => {
-    //   const { revenue, expense, loss } = response.data;
-    //   setRevenue(revenue);
-    //   setExpense(expense);
-    //   setLoss(loss);
-    // });
-  // }, []);
+  
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
@@ -65,7 +52,7 @@ const Dashboard = () => {
         <WalletCard>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{revenue}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>80000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",
@@ -82,7 +69,7 @@ const Dashboard = () => {
         <WalletCard>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Expense</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{expense}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>50000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
@@ -96,23 +83,9 @@ const Dashboard = () => {
 
   </div>
         </WalletCard>
-        <WalletCard>
-        <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>loss</Typography>
-          <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{loss}</Typography>
-         <div className='BoxColor' style={{  width: "24px",
-  height: "24px",
-  backgroundColor: "red",
-  alignSelf: "flex-end",}}>
-
-  </div>
-          </div>
-       
-  <div className="colorsection" style={{ width: "380px",
-  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:".6em"}}>
-
-  </div>
-        </WalletCard>
+        <div>
+        <TestChart/>
+        </div>
       </CardContainer>
     </Box>
 
@@ -120,7 +93,6 @@ const Dashboard = () => {
         <div className="ChartContainer">
           <ChartBar/>
           <ChartPie/>
-          <TestChart/>
         </div>
           
         </div>
@@ -134,7 +106,7 @@ const Dashboard = () => {
         <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
           <Typography variant="h5" sx={{color:"#002a80",fontWeight:"500"}}>Revenue</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"600",fontSize:"2em"}}>{revenue}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"600",fontSize:"2em"}}>120000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "#4ED273",
@@ -144,14 +116,14 @@ const Dashboard = () => {
           </div>
        
   <div className="colorsection" style={{ width: "380px",
-  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:".6em"}}>
+  height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:".3em"}}>
 
   </div>
         </WalletCard>
         <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>Expense</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{expense}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>150,000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
@@ -165,10 +137,10 @@ const Dashboard = () => {
 
   </div>
         </WalletCard>
-        <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
+        {/* <WalletCard sx={{marginBottom:"1em",width:"340px"}}>
         <Typography variant="h5" sx={{color:"#002a80",fontWeight:"700"}}>loss</Typography>
           <div className="moneyconatiner" style={{display:"flex", justifyContent:"space-between",marginTop:".2em"}}>
-          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>{loss}</Typography>
+          <Typography variant="h6"  sx={{color:"#002a80",fontWeight:"800",fontSize:"2em"}}>30000</Typography>
          <div className='BoxColor' style={{  width: "24px",
   height: "24px",
   backgroundColor: "red",
@@ -181,7 +153,7 @@ const Dashboard = () => {
   height: "50px",background:"#F2F2F2",marginLeft:"-2em", marginTop:".6em"}}>
 
   </div>
-        </WalletCard>
+        </WalletCard> */}
       </CardContainer>
     </Box>
 
