@@ -41,15 +41,15 @@ const Dashboard = () => {
   const [expense, setExpense] = useState(0);
   const [loss, setLoss] = useState(0);
 
-  useEffect(() => {
+  // useEffect(() => {
     // Fetch the wallet figures from the database
-    axios.get("/api/wallet").then((response) => {
-      const { revenue, expense, loss } = response.data;
-      setRevenue(revenue);
-      setExpense(expense);
-      setLoss(loss);
-    });
-  }, []);
+    // axios.get("/api/wallet").then((response) => {
+    //   const { revenue, expense, loss } = response.data;
+    //   setRevenue(revenue);
+    //   setExpense(expense);
+    //   setLoss(loss);
+    // });
+  // }, []);
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
